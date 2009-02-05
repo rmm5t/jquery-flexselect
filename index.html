@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="flexselect.css" type="text/css" media="screen" />
     <style>
       input { width: 400px; }
+      label, input { display: block; }
       label { font-weight: bold; }
       input, .flexselect_dropdown li { font-size: 1em; }
       small { color: #999; }
@@ -24,7 +25,7 @@
   </head>
   <body>
 
-    <label>Pick a Top 100 University or College in North America:</label><br />
+    <label>Pick a Top 100 University or College in North America: <em>(Start typing...)</em></label>
     <select rel="flexselect" id="school" name="school">
       <option value=""></option>
       <option value="1">Massachusetts Institute of Technology</option>
@@ -127,18 +128,58 @@
       <option value="98">Indiana University - Purdue University Indianapolis</option>
       <option value="99">California State University, Sacramento</option>
       <option value="100">New Jersey Institute of Technology</option>
-    </select> <em>(Start typing...)</em>
+    </select>
+    <p>From: <a href="http://www.4icu.org/topNorth-America/">Top 100 Universities And Colleges in North America</a></p>
 
 
-    <label style="display: block; margin-top: 100px;">Pick a Top 100 University or College in North America:</label>
-    <select rel="flexselect" id="school" name="school" style="padding: 0 40px; margin: 40px;">
-      <option value="1"><img src="http://www.gravatar.com/avatar/8e6e7e85e416fd569d0f821f6fbc4c2f?s=60&d=wavatar"/>Massachusetts Institute of Technology</option>
-      <option value="2">Harvard University</option>
-      <option value="3">University of California, Berkeley</Option>
-      <option value="4">University of Michigan</option>
+    <label style="margin-top: 100px;">Pick a Top 100 University or College in North America:</label>
+    <select rel="flexselect" id="president" name="president" style="font-size: 1.5em; 10px; margin: 10px 0;">
+      <option value="1">George Washington</option>
+      <option value="2">John Adams</option>
+      <option value="3">Thomas Jefferson</option>
+      <option value="4">James Madison</option>
+      <option value="5">James Monroe</option>
+      <option value="6">John Quincy Adams</option>
+      <option value="7">Andrew Jackson</option>
+      <option value="8">Martin Van Buren</option>
+      <option value="9">William Henry Harrison</option>
+      <option value="10">John Tyler</option>
+      <option value="11">James Knox Polk</option>
+      <option value="12">Zachary Taylor</option>
+      <option value="13">Millard Fillmore</option>
+      <option value="14">Franklin Pierce</option>
+      <option value="15">James Buchanan</option>
+      <option value="16">Abraham Lincoln</option>
+      <option value="17">Andrew Johnson</option>
+      <option value="18">Ulysses S. Grant</option>
+      <option value="19">Rutherford B. Hayes</option>
+      <option value="20">James Garfield</option>
+      <option value="21">Chester Arthur</option>
+      <option value="22">Grover Cleveland</option>
+      <option value="23">Benjamin Harrison</option>
+      <option value="24">Grover Cleveland</option>
+      <option value="25">William McKinley</option>
+      <option value="26">Theodore Roosevelt</option>
+      <option value="27">William Howard Taft</option>
+      <option value="28">Woodrow Wilson</option>
+      <option value="29">Warren Harding</option>
+      <option value="30">Calvin Coolidge</option>
+      <option value="31">Herbert Hoover</option>
+      <option value="32">Franklin D. Roosevelt</option>
+      <option value="33">Harry S Truman</option>
+      <option value="34">Dwight D. Eisenhower</option>
+      <option value="35">John F. Kennedy</option>
+      <option value="36">Lyndon Johnson</option>
+      <option value="37">Richard Nixon</option>
+      <option value="38">Gerald Ford</option>
+      <option value="39">James Carter</option>
+      <option value="40">Ronald Reagan</option>
+      <option value="41">George H. W. Bush</option>
+      <option value="42">William J. Clinton</option>
+      <option value="43">George W. Bush</option>
+      <option value="44">Barack H. Obama</option>
     </select>
 
-Reference: <a href="http://www.4icu.org/topNorth-America/">Top 100 Universities And Colleges in North America</a>
   </body>
 </html>
 
