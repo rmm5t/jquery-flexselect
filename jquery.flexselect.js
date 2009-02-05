@@ -19,9 +19,9 @@
   $.extend($.flexselect.prototype, {
     settings: {
       selectedClass: "flexselect_selected",
-      inputIdSuffix: "_flexselect",
       dropdownClass: "flexselect_dropdown",
-      dropdownIdSuffix: "_flexselect_dropdown"
+      inputIdTransform: function(id) { return id + "_flexselect"; },
+      dropdownIdTransform: function(id) { return id + "_flexselect_dropdown"; }
     },
     select: null,
     input: null,
@@ -55,14 +55,14 @@
       }).val(selected.val());
 
       this.input = $("<input type='text' autocomplete='off' />").attr({
-        id: this.select.attr("id") + this.settings.inputIdSuffix,
+        id: this.settings.inputIdTransform(this.select.attr("id")),
         accesskey: this.select.attr("accesskey"),
         tabindex: this.select.attr("tabindex"),
         style: this.select.attr("style")
       }).addClass(this.select.className).val($.trim(selected.text()));
 
       this.dropdown = $("<div><ul></ul></div>").attr({
-        id:  this.select.attr("id") + this.settings.dropdownIdSuffix
+        id: this.settings.dropdownIdTransform(this.select.attr("id"))
       }).addClass(this.settings.dropdownClass);
 
       this.select.after(this.dropdown).after(this.input).after(this.hidden).remove();
@@ -84,6 +84,9 @@
         switch (event.keyCode) {
     			case 13: // return
   			    event.preventDefault();
+            self.pickSelected();
+            self.input.focus().select();
+            self.dropdown.hide();
             // Pick selected
             break;
     			case 27: // esc
@@ -99,16 +102,27 @@
       });
 
       this.input.keydown(function(event) {
-        console.log(event.metaKey + " " + event.altKey + " " + event.keyCode);
         switch (event.keyCode) {
-    			case 33: case 34: case 38: case 40: event.preventDefault(); // pgup, pgdown, up, down
     		  case 9:  // tab
+            self.pickSelected();
             // Pick selected unless abbreviation length == 0
             break;
-    			case 33: self.markFirst();      break; // pgup
-          case 34: self.markLast();       break; // pgedown
-    			case 38: self.moveSelected(-1); break; // up
-    			case 40: self.moveSelected(1);  break; // down
+    			case 33: // pgup
+            event.preventDefault();
+            self.markFirst();
+            break;
+          case 34: // pgedown
+            event.preventDefault();
+            self.markLast();
+            break;
+    			case 38: // up
+            event.preventDefault();
+            self.moveSelected(-1);
+            break;
+    			case 40: // down
+            event.preventDefault();
+            self.moveSelected(1);
+            break;
         }
       });
     },
@@ -157,6 +171,12 @@
       rows.removeClass(this.settings.selectedClass);
       $(rows[n]).addClass(this.settings.selectedClass);
       this.selectedIndex = n;
+    },
+
+    pickSelected: function() {
+      var selected = this.results[this.selectedIndex];
+      this.input.val(selected.name);
+      this.hidden.val(selected.value);
     },
 
     markFirst: function(n) { this.markSelected(0); },
