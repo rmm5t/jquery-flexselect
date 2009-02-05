@@ -1,0 +1,46 @@
+# flexselect: a jQuery plugin
+
+Flexselect is a jQuery plugin that ...
+
+## Usage
+
+First, load jQuery, the quicksilver scoring algorithm,  and the plugin:
+
+    <script src="jquery.min.js" type="text/javascript"></script>
+    <script src="quicksilver.js" type="text/javascript"></script>
+    <script src="jquery.timeago.js" type="text/javascript"></script>
+
+Now, let's attach it to your select boxes on DOM ready:
+
+    <pre>
+      jQuery(document).ready(function() {
+        jQuery("select[class*=flexselect]).flexselect();
+      });
+    </pre>
+
+This will turn all select elements with a `class` of `flexselect`:
+
+    <select rel="flexselect" id="school" name="school">
+      <option value="1">Massachusetts Institute of Technology</option>
+      <option value="2">Harvard University</option>
+      <option value="3">University of California, Berkeley</option>
+      ...
+    </select>
+
+
+into a bad-ass autocompleting text box with flex matching support.
+
+**For more usage and examples**: [http://rmm5t.github.com/jquery-flexselect/](http://rmm5t.github.com/jquery-flexselect/)
+
+## Inspired by:
+
+* [jQuery.quickselect](http://jonmagic.com/2008/11/12/jquery-quickselect-js) by Daniel Parker
+* [MooTools Select Autocompleter](http://warpspire.com/tipsresources/interface-scripting/select-autocompleter/) by Kyle Neath
+* [Live Search with QuickSilver Style (for jQuery)](http://orderedlist.com/articles/live-search-with-quicksilver-style-for-jquery) by John Nunemaker
+* [jQuery LiveSearch](http://ejohn.org/blog/jquery-livesearch/) by John Resig
+
+## Other
+
+[MIT License](http://www.opensource.org/licenses/mit-license.php)
+
+Copyright (c) 2009, Ryan McGeary (ryanonjavascript -[at]- mcgeary [*dot*] org)
