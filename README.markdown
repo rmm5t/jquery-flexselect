@@ -50,6 +50,7 @@ into a bad-ass autocompleting text box with flex matching support.
 * Change the selectedIndex on mouseover; Make selectedIndex -1 on mouseout
 * Fix selectedIndex when mouse happens to sit over dropdown during incremental
   find. (perhaps unbind mouseover during filtering until a mousemove)
+* Build a better "marketing" page for the plugin including usage and examples.
 
 ## Author
 
