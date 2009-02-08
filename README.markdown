@@ -27,7 +27,6 @@ This will turn all select elements with a `class` of `flexselect`:
       ...
     </select>
 
-
 into a bad-ass autocompleting text box with flex matching support.
 
 **For more usage and examples**: [http://rmm5t.github.com/jquery-flexselect/](http://rmm5t.github.com/jquery-flexselect/)
@@ -38,6 +37,16 @@ into a bad-ass autocompleting text box with flex matching support.
 * [MooTools Select Autocompleter](http://warpspire.com/tipsresources/interface-scripting/select-autocompleter/) by Kyle Neath
 * [Live Search with QuickSilver Style (for jQuery)](http://orderedlist.com/articles/live-search-with-quicksilver-style-for-jquery) by John Nunemaker
 * [jQuery LiveSearch](http://ejohn.org/blog/jquery-livesearch/) by John Resig
+
+## Todo
+
+* Don't keep mismatched value during pickSelected, unless allowMismatch is set.
+* Change the selectedIndex on mouseover; Make selectedIndex -1 on mouseout
+* Fix selectedIndex when mouse happens to sit over dropdown during incremental find. (perhaps unbind mouseover during filtering until a mousemove)
+
+## Author
+
+[Ryan McGeary](http://ryan.mcgeary.org) ([@rmm5t](http://twitter.com/rmm5t))
 
 ## Other
 
