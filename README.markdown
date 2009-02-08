@@ -13,7 +13,7 @@ functionality to web controls.  FlexSelect does that for select boxes.
 First, load jQuery, the quicksilver scoring algorithm,  and the plugin:
 
     <script src="jquery.min.js" type="text/javascript"></script>
-    <script src="quicksilver.js" type="text/javascript"></script>
+    <script src="liquidmetal.js" type="text/javascript"></script>
     <script src="jquery.timeago.js" type="text/javascript"></script>
 
 Now, let's attach it to your select boxes on DOM ready:
@@ -48,12 +48,13 @@ into a bad-ass autocompleting text box with flex matching support.
 
 * Don't keep mismatched value during pickSelected, unless allowMismatch is set.
 * Fix selectedIndex when mouse happens to sit over dropdown during incremental
-  find. (perhaps unbind mouseover during filtering until a mousemove)
+  find (perhaps unbind mouseover during filtering until a mousemove).
 * Build a better "marketing" page for the plugin including usage and examples.
 * Describe better what is going on, including the behavior of what is submitted
   from the form.
-* Add templating support for matched list output
-* Add highlighting of matches characters in the results
+* Add templating support for matched list output.
+* Add highlighting of matches characters in the results.
+* Make a rake task to package up only the relevant files for distribution.
 
 ## Author
 
