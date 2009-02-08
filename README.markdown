@@ -10,11 +10,13 @@ functionality to web controls.  FlexSelect does that for select boxes.
 
 ## Usage
 
-First, load jQuery, the quicksilver scoring algorithm,  and the plugin:
+First, load [jQuery](http://jquery.com/), the
+[LiquidMetal](https://github.com/rmm5t/liquidmetal/) scoring algorithm, and the
+plugin:
 
     <script src="jquery.min.js" type="text/javascript"></script>
     <script src="liquidmetal.js" type="text/javascript"></script>
-    <script src="jquery.timeago.js" type="text/javascript"></script>
+    <script src="jquery.flexselect.js" type="text/javascript"></script>
 
 Now, let's attach it to your select boxes on DOM ready:
 
