@@ -26,7 +26,7 @@ Now, let's attach it to your select boxes on DOM ready:
 
 This will turn all select elements with a `class` of `flexselect`:
 
-    <select rel="flexselect" id="school" name="school">
+    <select class="flexselect" id="school" name="school">
       <option value="1">Massachusetts Institute of Technology</option>
       <option value="2">Harvard University</option>
       <option value="3">University of California, Berkeley</option>
@@ -47,7 +47,6 @@ into a bad-ass autocompleting text box with flex matching support.
 ## Todo
 
 * Don't keep mismatched value during pickSelected, unless allowMismatch is set.
-* Change the selectedIndex on mouseover; Make selectedIndex -1 on mouseout
 * Fix selectedIndex when mouse happens to sit over dropdown during incremental
   find. (perhaps unbind mouseover during filtering until a mousemove)
 * Build a better "marketing" page for the plugin including usage and examples.
