@@ -133,7 +133,7 @@
 
       var results = [];
       $.each(this.cache, function() {
-        this.score = this.name.toLowerCase().score(abbreviation.toLowerCase());
+        this.score = LiquidMetal.score(this.name, abbreviation);
         if (this.score > 0.0) results.push(this);
       });
       this.results = results;
