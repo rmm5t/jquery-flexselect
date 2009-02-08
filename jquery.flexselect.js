@@ -72,6 +72,10 @@
     wire: function() {
       var self = this;
 
+      this.input.click(function() {
+        self.input.blur().focus().select();
+      });
+
       this.input.focus(function() {
         self.abbreviationBeforeFocus = self.input.val();
         self.filterResults();
@@ -80,6 +84,24 @@
       this.input.blur(function() {
         self.dropdown.hide();
         self.lastAbbreviation = null;
+      });
+
+      this.dropdown.mouseover(function (event) {
+        if (event.target.tagName == "LI") {
+          var rows = self.dropdown.find("li");
+          self.markSelected(rows.index($(event.target)));
+        }
+      });
+      this.dropdown.mouseleave(function () {
+        self.markSelected(-1);
+      });
+      this.dropdown.mousedown(function (event) {
+  			event.preventDefault();
+      });
+      this.dropdown.mouseup(function (event) {
+        self.pickSelected();
+        self.input.focus().select();
+        self.dropdown.hide();
       });
 
       this.input.keyup(function(event) {
@@ -164,12 +186,13 @@
     },
 
     markSelected: function(n) {
-      if (n < 0 || n > this.results.length) return;
+      if (n > this.results.length) return;
 
       var rows = this.dropdown.find("li");
       rows.removeClass(this.settings.selectedClass);
-      $(rows[n]).addClass(this.settings.selectedClass);
       this.selectedIndex = n;
+
+      if (n >= 0) $(rows[n]).addClass(this.settings.selectedClass);
     },
 
     pickSelected: function() {
