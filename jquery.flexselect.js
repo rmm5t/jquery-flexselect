@@ -20,7 +20,7 @@
     settings: {
       selectedClass: "flexselect_selected",
       dropdownClass: "flexselect_dropdown",
-      inputIdTransform: function(id) { return id + "_flexselect"; },
+      inputIdTransform:    function(id) { return id + "_flexselect"; },
       dropdownIdTransform: function(id) { return id + "_flexselect_dropdown"; }
     },
     select: null,
@@ -30,6 +30,7 @@
     cache: [],
     results: [],
     lastAbbreviation: null,
+    abbreviationBeforeFocus: null,
     selectedIndex: 0,
 
     init: function(select, options) {
@@ -72,6 +73,7 @@
       var self = this;
 
       this.input.focus(function() {
+        self.abbreviationBeforeFocus = self.input.val();
         self.filterResults();
       });
 
@@ -87,13 +89,12 @@
             self.pickSelected();
             self.input.focus().select();
             self.dropdown.hide();
-            // Pick selected
             break;
     			case 27: // esc
-            self.input.blur();
-            break;
-    			case 38: // up
-    			case 40: // down
+            // reset the result back to the original
+            self.input.val(self.abbreviationBeforeFocus);
+            self.input.focus().select();
+            self.dropdown.hide();
             break;
     		  default:
             self.filterResults();
@@ -104,8 +105,7 @@
       this.input.keydown(function(event) {
         switch (event.keyCode) {
     		  case 9:  // tab
-            self.pickSelected();
-            // Pick selected unless abbreviation length == 0
+            if (self.input.val().length > 0) self.pickSelected();
             break;
     			case 33: // pgup
             event.preventDefault();
@@ -133,7 +133,6 @@
 
       var results = [];
       $.each(this.cache, function() {
-        // this.score = this.name.score(abbreviation); // TODO: scoring should be case insensitive
         this.score = this.name.toLowerCase().score(abbreviation.toLowerCase());
         if (this.score > 0.0) results.push(this);
       });
@@ -175,12 +174,14 @@
 
     pickSelected: function() {
       var selected = this.results[this.selectedIndex];
-      this.input.val(selected.name);
-      this.hidden.val(selected.value);
+      if (selected) {
+        this.input.val(selected.name);
+        this.hidden.val(selected.value);
+      }
     },
 
-    markFirst: function(n) { this.markSelected(0); },
-    markLast: function(n) { this.markSelected(this.results.length - 1); },
+    markFirst:    function(n) { this.markSelected(0); },
+    markLast:     function(n) { this.markSelected(this.results.length - 1); },
     moveSelected: function(n) { this.markSelected(this.selectedIndex+n); }
   });
 
