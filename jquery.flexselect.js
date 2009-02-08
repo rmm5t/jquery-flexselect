@@ -180,7 +180,8 @@
 
       var list = this.dropdown.children("ul").html("");
       $.each(this.results, function() {
-        list.append($("<li/>").html(this.name + " <small>[" + Math.round(this.score*100)/100 + "]</small>"));
+        //list.append($("<li/>").html(this.name + " <small>[" + Math.round(this.score*100)/100 + "]</small>"));
+        list.append($("<li/>").html(this.name));
       });
       this.dropdown.show();
     },
