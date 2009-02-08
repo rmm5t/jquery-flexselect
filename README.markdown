@@ -50,6 +50,10 @@ into a bad-ass autocompleting text box with flex matching support.
 * Fix selectedIndex when mouse happens to sit over dropdown during incremental
   find. (perhaps unbind mouseover during filtering until a mousemove)
 * Build a better "marketing" page for the plugin including usage and examples.
+* Describe better what is going on, including the behavior of what is submitted
+  from the form.
+* Add templating support for matched list output
+* Add highlighting of matches characters in the results
 
 ## Author
 
