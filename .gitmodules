@@ -1,3 +1,0 @@
-[submodule "vendor/liquidmetal"]
-	path = vendor/liquidmetal
-	url = git://github.com/rmm5t/liquidmetal.git
