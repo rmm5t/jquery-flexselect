@@ -1,5 +1,5 @@
 /*
- * flexselect: a jQuery plugin, version: 0.1 (02/03/2009)
+ * flexselect: a jQuery plugin, version: 0.1 (2009-02-08)
  * @requires jQuery v1.3 or later
  *
  * FlexSelect is a jQuery plugin that makes it easy to convert a select box into
