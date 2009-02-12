@@ -18,6 +18,7 @@
 
   $.extend($.flexselect.prototype, {
     settings: {
+      allowMismatch: false,
       selectedClass: "flexselect_selected",
       dropdownClass: "flexselect_dropdown",
       inputIdTransform:    function(id) { return id + "_flexselect"; },
@@ -32,6 +33,7 @@
     lastAbbreviation: null,
     abbreviationBeforeFocus: null,
     selectedIndex: 0,
+    picked: false,
 
     init: function(select, options) {
       $.extend(this.settings, options);
@@ -73,17 +75,21 @@
       var self = this;
 
       this.input.click(function() {
-        self.input.blur().focus().select();
+        self.lastAbbreviation = null;
+        self.focus();
       });
 
       this.input.focus(function() {
         self.abbreviationBeforeFocus = self.input.val();
+        self.picked = false;
+        self.input.select();
         self.filterResults();
       });
 
       this.input.blur(function() {
         self.dropdown.hide();
         self.lastAbbreviation = null;
+        if (!self.picked) self.reset();
       });
 
       this.dropdown.mouseover(function (event) {
@@ -114,7 +120,7 @@
             break;
     			case 27: // esc
             // reset the result back to the original
-            self.input.val(self.abbreviationBeforeFocus);
+            self.reset();
             self.focus();
             self.dropdown.hide();
             break;
@@ -127,7 +133,7 @@
       this.input.keydown(function(event) {
         switch (event.keyCode) {
     		  case 9:  // tab
-            if (self.input.val().length > 0) self.pickSelected();
+            self.pickSelected();
             break;
     			case 33: // pgup
             event.preventDefault();
@@ -180,7 +186,7 @@
 
       var list = this.dropdown.children("ul").html("");
       $.each(this.results, function() {
-        //list.append($("<li/>").html(this.name + " <small>[" + Math.round(this.score*100)/100 + "]</small>"));
+        // list.append($("<li/>").html(this.name + " <small>[" + Math.round(this.score*100)/100 + "]</small>"));
         list.append($("<li/>").html(this.name));
       });
       this.dropdown.show();
@@ -201,13 +207,19 @@
       if (selected) {
         this.input.val(selected.name);
         this.hidden.val(selected.value);
+      } else if (this.settings.allowMismatch) {
+        this.hidden.val("");
+      } else {
+        this.reset();
       }
+      this.picked = true;
     },
 
     markFirst:    function(n) { this.markSelected(0); },
     markLast:     function(n) { this.markSelected(this.results.length - 1); },
     moveSelected: function(n) { this.markSelected(this.selectedIndex+n); },
-    focus:        function(n) { this.input.focus().select(); }
+    reset:        function(n) { this.input.val(this.abbreviationBeforeFocus); },
+    focus:        function(n) { this.input.focus(); }
   });
 
   $.fn.flexselect = function(options) {
