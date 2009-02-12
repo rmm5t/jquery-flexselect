@@ -1,5 +1,5 @@
 /*
- * flexselect: a jQuery plugin, version: 0.1 (2009-02-08)
+ * flexselect: a jQuery plugin, version: %RELEASE_VERSION% (%RELEASE_DATE%)
  * @requires jQuery v1.3 or later
  *
  * FlexSelect is a jQuery plugin that makes it easy to convert a select box into
@@ -100,7 +100,7 @@
       });
       this.dropdown.mouseup(function (event) {
         self.pickSelected();
-        self.input.focus().select();
+        self.focus();
         self.dropdown.hide();
       });
 
@@ -109,13 +109,13 @@
     			case 13: // return
   			    event.preventDefault();
             self.pickSelected();
-            self.input.focus().select();
+            self.focus();
             self.dropdown.hide();
             break;
     			case 27: // esc
             // reset the result back to the original
             self.input.val(self.abbreviationBeforeFocus);
-            self.input.focus().select();
+            self.focus();
             self.dropdown.hide();
             break;
     		  default:
@@ -206,7 +206,8 @@
 
     markFirst:    function(n) { this.markSelected(0); },
     markLast:     function(n) { this.markSelected(this.results.length - 1); },
-    moveSelected: function(n) { this.markSelected(this.selectedIndex+n); }
+    moveSelected: function(n) { this.markSelected(this.selectedIndex+n); },
+    focus:        function(n) { this.input.focus().select(); }
   });
 
   $.fn.flexselect = function(options) {
