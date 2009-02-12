@@ -54,8 +54,7 @@ into a bad-ass autocompleting text box with flex matching support.
 * Describe better what is going on, including the behavior of what is submitted
   from the form.
 * Add templating support for matched list output.
-* Add highlighting of matches characters in the results.
-* Make a rake task to package up only the relevant files for distribution.
+* Add highlighting of matched characters in the results.
 
 ## Author
 
