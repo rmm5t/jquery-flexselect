@@ -48,7 +48,6 @@ into a bad-ass autocompleting text box with flex matching support.
 
 ## Todo
 
-* Add inputNameTransform setting (defaulting to returning null)
 * Fix selectedIndex when mouse happens to sit over dropdown during incremental
   find (perhaps unbind mouseover during filtering until a mousemove).
 * Build a better "marketing" page for the plugin including usage and examples.

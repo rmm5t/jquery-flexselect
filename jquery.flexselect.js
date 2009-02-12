@@ -21,8 +21,9 @@
       allowMismatch: false,
       selectedClass: "flexselect_selected",
       dropdownClass: "flexselect_dropdown",
-      inputIdTransform:    function(id) { return id + "_flexselect"; },
-      dropdownIdTransform: function(id) { return id + "_flexselect_dropdown"; }
+      inputIdTransform:    function(id)   { return id + "_flexselect"; },
+      inputNameTransform:  function(name) { return; },
+      dropdownIdTransform: function(id)   { return id + "_flexselect_dropdown"; }
     },
     select: null,
     input: null,
@@ -59,6 +60,7 @@
 
       this.input = $("<input type='text' autocomplete='off' />").attr({
         id: this.settings.inputIdTransform(this.select.attr("id")),
+        name: this.settings.inputNameTransform(this.select.attr("name")),
         accesskey: this.select.attr("accesskey"),
         tabindex: this.select.attr("tabindex"),
         style: this.select.attr("style")
