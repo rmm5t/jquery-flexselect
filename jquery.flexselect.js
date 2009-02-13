@@ -70,7 +70,8 @@
         id: this.settings.dropdownIdTransform(this.select.attr("id"))
       }).addClass(this.settings.dropdownClass);
 
-      this.select.after(this.dropdown).after(this.input).after(this.hidden).remove();
+      this.select.after(this.input).after(this.hidden).remove();
+      $("body").append(this.dropdown);
     },
 
     wire: function() {
@@ -185,10 +186,11 @@
 
     renderDropdown: function() {
       var dropdownBorderWidth = this.dropdown.outerWidth() - this.dropdown.innerWidth();
+      var inputOffset = this.input.offset();
       this.dropdown.css({
         width: (this.input.outerWidth() - dropdownBorderWidth) + "px",
-        top: (this.input.offset().top + this.input.outerHeight()) + "px",
-        left: this.input.offset().left + "px"
+        top: (inputOffset.top + this.input.outerHeight()) + "px",
+        left: inputOffset.left + "px"
       });
 
       var list = this.dropdown.children("ul").html("");
