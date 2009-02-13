@@ -127,7 +127,7 @@
             self.dropdown.hide();
             break;
           case 27: // esc
-            // reset the result back to the original
+            event.preventDefault();
             self.reset();
             self.focus();
             self.dropdown.hide();
@@ -158,6 +158,11 @@
           case 40: // down
             event.preventDefault();
             self.moveSelected(1);
+            break;
+          case 13: // return
+          case 27: // esc
+            event.preventDefault();
+            event.stopPropagation();
             break;
         }
       });
