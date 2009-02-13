@@ -81,6 +81,11 @@
         self.focus();
       });
 
+      this.input.mouseup(function() {
+        // This is so Safari selection actually occurs.
+  			event.preventDefault();
+      });
+
       this.input.focus(function() {
         self.abbreviationBeforeFocus = self.input.val();
         self.picked = false;
