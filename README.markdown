@@ -11,7 +11,7 @@ functionality to web controls.  FlexSelect does that for select boxes.
 ## Usage
 
 First, load [jQuery](http://jquery.com/), the
-[LiquidMetal](https://github.com/rmm5t/liquidmetal/) scoring algorithm, and the
+[LiquidMetal](http://github.com/rmm5t/liquidmetal/) scoring algorithm, and the
 plugin:
 
     <script src="jquery.min.js" type="text/javascript"></script>
@@ -29,9 +29,9 @@ Now, let's attach it to your select boxes on DOM ready:
 This will turn all select elements with a `class` of `flexselect`:
 
     <select class="flexselect" id="school" name="school">
-      <option value="1">Massachusetts Institute of Technology</option>
-      <option value="2">Harvard University</option>
-      <option value="3">University of California, Berkeley</option>
+      <option value="1">George Washington</option>
+      <option value="2">John Adams</option>
+      <option value="3">Thomas Jefferson</option>
       ...
     </select>
 
@@ -50,9 +50,6 @@ into a bad-ass autocompleting text box with flex matching support.
 
 * Fix selectedIndex when mouse happens to sit over dropdown during incremental
   find (perhaps unbind mouseover during filtering until a mousemove).
-* Build a better "marketing" page for the plugin including usage and examples.
-* Describe better what is going on, including the behavior of what is submitted
-  from the form.
 * Add templating support for matched list output.
 * Add highlighting of matched characters in the results.
 
