@@ -81,7 +81,7 @@
         self.focus();
       });
 
-      this.input.mouseup(function() {
+      this.input.mouseup(function(event) {
         // This is so Safari selection actually occurs.
         event.preventDefault();
       });
