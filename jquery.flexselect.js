@@ -83,7 +83,7 @@
 
       this.input.mouseup(function() {
         // This is so Safari selection actually occurs.
-  			event.preventDefault();
+        event.preventDefault();
       });
 
       this.input.focus(function() {
@@ -109,7 +109,7 @@
         self.markSelected(-1);
       });
       this.dropdown.mousedown(function (event) {
-  			event.preventDefault();
+        event.preventDefault();
       });
       this.dropdown.mouseup(function (event) {
         self.pickSelected();
@@ -119,19 +119,19 @@
 
       this.input.keyup(function(event) {
         switch (event.keyCode) {
-    			case 13: // return
-  			    event.preventDefault();
+          case 13: // return
+            event.preventDefault();
             self.pickSelected();
             self.focus();
             self.dropdown.hide();
             break;
-    			case 27: // esc
+          case 27: // esc
             // reset the result back to the original
             self.reset();
             self.focus();
             self.dropdown.hide();
             break;
-    		  default:
+          default:
             self.filterResults();
             break;
         }
@@ -139,10 +139,10 @@
 
       this.input.keydown(function(event) {
         switch (event.keyCode) {
-    		  case 9:  // tab
+          case 9:  // tab
             self.pickSelected();
             break;
-    			case 33: // pgup
+          case 33: // pgup
             event.preventDefault();
             self.markFirst();
             break;
@@ -150,11 +150,11 @@
             event.preventDefault();
             self.markLast();
             break;
-    			case 38: // up
+          case 38: // up
             event.preventDefault();
             self.moveSelected(-1);
             break;
-    			case 40: // down
+          case 40: // down
             event.preventDefault();
             self.moveSelected(1);
             break;
@@ -187,8 +187,8 @@
       var dropdownBorderWidth = this.dropdown.outerWidth() - this.dropdown.innerWidth();
       this.dropdown.css({
         width: (this.input.outerWidth() - dropdownBorderWidth) + "px",
-    		top: (this.input.offset().top + this.input.outerHeight()) + "px",
-    		left: this.input.offset().left + "px"
+        top: (this.input.offset().top + this.input.outerHeight()) + "px",
+        left: this.input.offset().left + "px"
       });
 
       var list = this.dropdown.children("ul").html("");
