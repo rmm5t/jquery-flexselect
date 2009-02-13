@@ -64,7 +64,7 @@
         accesskey: this.select.attr("accesskey"),
         tabindex: this.select.attr("tabindex"),
         style: this.select.attr("style")
-      }).addClass(this.select.className).val($.trim(selected.text()));
+      }).addClass(this.select.attr("class")).val($.trim(selected.text()));
 
       this.dropdown = $("<div><ul></ul></div>").attr({
         id: this.settings.dropdownIdTransform(this.select.attr("id"))
