@@ -21,11 +21,16 @@ file package.package_dir_path do
   sh("sed -e 's/%RELEASE_VERSION%/#{package.version}/g' -e 's/%RELEASE_DATE%/#{Date.today}/g' #{input} > #{output}")
 end
 
-# task :publish do
-#   puts "not implemented yet"
-# end
+task :publish do
+  sh("git rebase master gh-pages")
+  sh("git checkout master")
+  sh("git push")
+  sh("git push --tags")
+end
 
 task :release => :repackage do
-  sh("git tag 'v#{package.version}'") if agree("Create a tag?", true)
-  puts("\n *** Don't forget to `git push --tags` ***")
+  if agree("Create a tag?", true)
+    sh("git tag 'v#{package.version}'")
+    puts("\n *** Don't forget to `git push --tags` ***")
+  end
 end
