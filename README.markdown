@@ -28,7 +28,7 @@ Now, let's attach it to your select boxes on DOM ready:
 
 This will turn all select elements with a `class` of `flexselect`:
 
-    <select class="flexselect" id="school" name="school">
+    <select class="flexselect" id="president name="president">
       <option value="1">George Washington</option>
       <option value="2">John Adams</option>
       <option value="3">Thomas Jefferson</option>
