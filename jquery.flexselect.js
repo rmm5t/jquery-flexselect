@@ -35,6 +35,7 @@
     abbreviationBeforeFocus: null,
     selectedIndex: 0,
     picked: false,
+    dropdownMouseover: false, // Workaround for poor IE behaviors
 
     init: function(select, options) {
       $.extend(this.settings, options);
@@ -95,9 +96,11 @@
       });
 
       this.input.blur(function() {
-        self.dropdown.hide();
-        self.lastAbbreviation = null;
-        if (!self.picked) self.reset();
+        if (!self.dropdownMouseover) {
+          self.dropdown.hide();
+          self.lastAbbreviation = null;
+          if (!self.picked) self.reset();
+        }
       });
 
       this.dropdown.mouseover(function (event) {
@@ -105,9 +108,11 @@
           var rows = self.dropdown.find("li");
           self.markSelected(rows.index($(event.target)));
         }
+        self.dropdownMouseover = true;
       });
       this.dropdown.mouseleave(function () {
         self.markSelected(-1);
+        self.dropdownMouseover = false;
       });
       this.dropdown.mousedown(function (event) {
         event.preventDefault();
@@ -142,6 +147,7 @@
         switch (event.keyCode) {
           case 9:  // tab
             self.pickSelected();
+            self.dropdown.hide();
             break;
           case 33: // pgup
             event.preventDefault();
