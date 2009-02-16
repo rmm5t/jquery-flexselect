@@ -97,8 +97,7 @@
 
       this.input.blur(function() {
         if (!self.dropdownMouseover) {
-          self.dropdown.hide();
-          self.lastAbbreviation = null;
+          self.hide();
           if (!self.picked) self.reset();
         }
       });
@@ -119,8 +118,7 @@
       });
       this.dropdown.mouseup(function (event) {
         self.pickSelected();
-        self.focus();
-        self.dropdown.hide();
+        self.focusAndHide();
       });
 
       this.input.keyup(function(event) {
@@ -128,14 +126,12 @@
           case 13: // return
             event.preventDefault();
             self.pickSelected();
-            self.focus();
-            self.dropdown.hide();
+            self.focusAndHide();
             break;
           case 27: // esc
             event.preventDefault();
             self.reset();
-            self.focus();
-            self.dropdown.hide();
+            self.focusAndHide();
             break;
           default:
             self.filterResults();
@@ -147,7 +143,7 @@
         switch (event.keyCode) {
           case 9:  // tab
             self.pickSelected();
-            self.dropdown.hide();
+            self.hide();
             break;
           case 33: // pgup
             event.preventDefault();
@@ -235,11 +231,17 @@
       this.picked = true;
     },
 
-    markFirst:    function(n) { this.markSelected(0); },
-    markLast:     function(n) { this.markSelected(this.results.length - 1); },
+    hide: function() {
+      this.dropdown.hide();
+      this.lastAbbreviation = null;
+    },
+
     moveSelected: function(n) { this.markSelected(this.selectedIndex+n); },
-    reset:        function(n) { this.input.val(this.abbreviationBeforeFocus); },
-    focus:        function(n) { this.input.focus(); }
+    markFirst:    function()  { this.markSelected(0); },
+    markLast:     function()  { this.markSelected(this.results.length - 1); },
+    reset:        function()  { this.input.val(this.abbreviationBeforeFocus); },
+    focus:        function()  { this.input.focus(); },
+    focusAndHide: function()  { this.focus(); this.hide(); }
   });
 
   $.fn.flexselect = function(options) {
