@@ -20,200 +20,207 @@
       $(document).ready(function() {
         $("select[class*=flexselect]").flexselect();
         $("input:text:enabled:first").focus();
+        $("form").submit(function() {
+          alert($(this).serialize());
+          return false;
+        });
       });
     </script>
   </head>
   <body>
-    <label>Pick a Top 100 University or College in North America: <em>(Start typing...)</em></label>
-    <select class="flexselect" id="school" name="school" tabindex="1">
-      <option value=""></option>
-      <option value="1">Massachusetts Institute of Technology</option>
-      <option value="2">Harvard University</option>
-      <option value="3">University of California, Berkeley</Option>
-      <option value="4">University of Michigan</option>
-      <option value="5">University of Illinois at Urbana-Champaign</option>
-      <option value="6">Purdue University</option>
-      <option value="7">University of Wisconsin-Madison</option>
-      <option value="8">Yale University</option>
-      <option value="9">Indiana University - System</option>
-      <option value="10">University of California System</option>
-      <option value="11">Stanford University</option>
-      <option value="12">Penn State University</option>
-      <option value="13">The University of Texas at Austin</option>
-      <option value="14">University of Washington</option>
-      <option value="15">University of Pennsylvania</option>
-      <option value="16">Cornell University</option>
-      <option value="17">Columbia University in the City of New York</option>
-      <option value="18">University of California, Los Angeles</option>
-      <option value="19">University of Minnesota</option>
-      <option value="20">New York University</option>
-      <option value="21">University of Florida</option>
-      <option value="22">University of Virginia</option>
-      <option value="23">Carnegie Mellon University</option>
-      <option value="24">Rutgers University - New Brunswick</option>
-      <option value="25">University of Toronto</option>
-      <option value="26">University of Maryland</option>
-      <option value="27">The Ohio State University</option>
-      <option value="28">Virginia Polytechnic Institute and State University</option>
-      <option value="29">University of Arizona</option>
-      <option value="30">University of Southern California</option>
-      <option value="31">Texas A&M University</option>
-      <option value="32">Princeton University</option>
-      <option value="33">University of North Carolina at Chapel Hill</option>
-      <option value="34">Duke University</option>
-      <option value="35">North Carolina State University</option>
-      <option value="36">Michigan State University</option>
-      <option value="37">University of California, San Diego</option>
-      <option value="38">University of Chicago</option>
-      <option value="39">The University of British Columbia</option>
-      <option value="40">University of California, Irvine</option>
-      <option value="41">University of California, Davis</option>
-      <option value="42">Johns Hopkins University</option>
-      <option value="43">Arizona State University</option>
-      <option value="44">University of Georgia</option>
-      <option value="45">Boston University</option>
-      <option value="46">University of Colorado at Boulder</option>
-      <option value="47">University of Waterloo</option>
-      <option value="48">Northwestern University</option>
-      <option value="49">University of Pittsburgh</option>
-      <option value="50">York University</option>
-      <option value="51">Iowa State University of Science and Technology</option>
-      <option value="52">Georgia Institute of Technology</option>
-      <option value="53">University of Iowa</option>
-      <option value="54">McGill University</option>
-      <option value="55">University of California, Santa Barbara</option>
-      <option value="56">University of Alberta</option>
-      <option value="57">University of Oregon</option>
-      <option value="58">University of Delaware</option>
-      <option value="59">Université Laval</option>
-      <option value="60">California Institute of Technology</option>
-      <option value="61">Oregon State University</option>
-      <option value="62">University of California, Riverside</option>
-      <option value="63">University of Illinois at Chicago</option>
-      <option value="64">University of Nebraska - Lincoln</option>
-      <option value="65">Drexel University</option>
-      <option value="66">Simon Fraser University</option>
-      <option value="67">Rice University</option>
-      <option value="68">Washington University in St. Louis</option>
-      <option value="69">Virginia Commonwealth University</option>
-      <option value="70">Stony Brook University, State University of New York</option>
-      <option value="71">Brown University</option>
-      <option value="72">San Diego State University</option>
-      <option value="73">Georgetown University</option>
-      <option value="74">Université de Montréal</option>
-      <option value="75">University of Rochester</option>
-      <option value="76">Dartmouth College</option>
-      <option value="77">University of Calgary</option>
-      <option value="78">University of Victoria</option>
-      <option value="79">Carleton University</option>
-      <option value="80">Vanderbilt University</option>
-      <option value="81">Emory University</option>
-      <option value="82">University of Notre Dame</option>
-      <option value="83">Université du Québec à Montréal</option>
-      <option value="84">The University of Western Ontario</option>
-      <option value="85">University of California, Santa Cruz</option>
-      <option value="86">University of California, San Francisco</option>
-      <option value="87">Auburn University</option>
-      <option value="88">McMaster University</option>
-      <option value="89">University of Wisconsin-Milwaukee</option>
-      <option value="90">Portland State University</option>
-      <option value="91">Queen's University</option>
-      <option value="92">University of Guelph</option>
-      <option value="93">SUNY at Binghamton</option>
-      <option value="94">Utah State University</option>
-      <option value="95">The University of Texas at Arlington</option>
-      <option value="96">Illinois Institute of Technology</option>
-      <option value="97">Concordia University</option>
-      <option value="98">Indiana University - Purdue University Indianapolis</option>
-      <option value="99">California State University, Sacramento</option>
-      <option value="100">New Jersey Institute of Technology</option>
-    </select>
-    <p>From: <a href="http://www.4icu.org/topNorth-America/">Top 100 Universities And Colleges in North America</a></p>
+    <form>
+      <label>Pick a Top 100 University or College in North America: <em>(Start typing...)</em></label>
+      <select class="flexselect" id="school" name="school" tabindex="1">
+        <option value=""></option>
+        <option value="1">Massachusetts Institute of Technology</option>
+        <option value="2">Harvard University</option>
+        <option value="3">University of California, Berkeley</Option>
+        <option value="4">University of Michigan</option>
+        <option value="5">University of Illinois at Urbana-Champaign</option>
+        <option value="6">Purdue University</option>
+        <option value="7">University of Wisconsin-Madison</option>
+        <option value="8">Yale University</option>
+        <option value="9">Indiana University - System</option>
+        <option value="10">University of California System</option>
+        <option value="11">Stanford University</option>
+        <option value="12">Penn State University</option>
+        <option value="13">The University of Texas at Austin</option>
+        <option value="14">University of Washington</option>
+        <option value="15">University of Pennsylvania</option>
+        <option value="16">Cornell University</option>
+        <option value="17">Columbia University in the City of New York</option>
+        <option value="18">University of California, Los Angeles</option>
+        <option value="19">University of Minnesota</option>
+        <option value="20">New York University</option>
+        <option value="21">University of Florida</option>
+        <option value="22">University of Virginia</option>
+        <option value="23">Carnegie Mellon University</option>
+        <option value="24">Rutgers University - New Brunswick</option>
+        <option value="25">University of Toronto</option>
+        <option value="26">University of Maryland</option>
+        <option value="27">The Ohio State University</option>
+        <option value="28">Virginia Polytechnic Institute and State University</option>
+        <option value="29">University of Arizona</option>
+        <option value="30">University of Southern California</option>
+        <option value="31">Texas A&M University</option>
+        <option value="32">Princeton University</option>
+        <option value="33">University of North Carolina at Chapel Hill</option>
+        <option value="34">Duke University</option>
+        <option value="35">North Carolina State University</option>
+        <option value="36">Michigan State University</option>
+        <option value="37">University of California, San Diego</option>
+        <option value="38">University of Chicago</option>
+        <option value="39">The University of British Columbia</option>
+        <option value="40">University of California, Irvine</option>
+        <option value="41">University of California, Davis</option>
+        <option value="42">Johns Hopkins University</option>
+        <option value="43">Arizona State University</option>
+        <option value="44">University of Georgia</option>
+        <option value="45">Boston University</option>
+        <option value="46">University of Colorado at Boulder</option>
+        <option value="47">University of Waterloo</option>
+        <option value="48">Northwestern University</option>
+        <option value="49">University of Pittsburgh</option>
+        <option value="50">York University</option>
+        <option value="51">Iowa State University of Science and Technology</option>
+        <option value="52">Georgia Institute of Technology</option>
+        <option value="53">University of Iowa</option>
+        <option value="54">McGill University</option>
+        <option value="55">University of California, Santa Barbara</option>
+        <option value="56">University of Alberta</option>
+        <option value="57">University of Oregon</option>
+        <option value="58">University of Delaware</option>
+        <option value="59">Université Laval</option>
+        <option value="60">California Institute of Technology</option>
+        <option value="61">Oregon State University</option>
+        <option value="62">University of California, Riverside</option>
+        <option value="63">University of Illinois at Chicago</option>
+        <option value="64">University of Nebraska - Lincoln</option>
+        <option value="65">Drexel University</option>
+        <option value="66">Simon Fraser University</option>
+        <option value="67">Rice University</option>
+        <option value="68">Washington University in St. Louis</option>
+        <option value="69">Virginia Commonwealth University</option>
+        <option value="70">Stony Brook University, State University of New York</option>
+        <option value="71">Brown University</option>
+        <option value="72">San Diego State University</option>
+        <option value="73">Georgetown University</option>
+        <option value="74">Université de Montréal</option>
+        <option value="75">University of Rochester</option>
+        <option value="76">Dartmouth College</option>
+        <option value="77">University of Calgary</option>
+        <option value="78">University of Victoria</option>
+        <option value="79">Carleton University</option>
+        <option value="80">Vanderbilt University</option>
+        <option value="81">Emory University</option>
+        <option value="82">University of Notre Dame</option>
+        <option value="83">Université du Québec à Montréal</option>
+        <option value="84">The University of Western Ontario</option>
+        <option value="85">University of California, Santa Cruz</option>
+        <option value="86">University of California, San Francisco</option>
+        <option value="87">Auburn University</option>
+        <option value="88">McMaster University</option>
+        <option value="89">University of Wisconsin-Milwaukee</option>
+        <option value="90">Portland State University</option>
+        <option value="91">Queen's University</option>
+        <option value="92">University of Guelph</option>
+        <option value="93">SUNY at Binghamton</option>
+        <option value="94">Utah State University</option>
+        <option value="95">The University of Texas at Arlington</option>
+        <option value="96">Illinois Institute of Technology</option>
+        <option value="97">Concordia University</option>
+        <option value="98">Indiana University - Purdue University Indianapolis</option>
+        <option value="99">California State University, Sacramento</option>
+        <option value="100">New Jersey Institute of Technology</option>
+      </select>
+      <p>From: <a href="http://www.4icu.org/topNorth-America/">Top 100 Universities And Colleges in North America</a></p>
 
-    <label style="margin: 75px 0 0 400px;">Pick a US President: <em>(Start typing...)</em></label>
-    <select id="president" class="flexselect" name="president"  tabindex="2" style="font-size: 1.5em; 10px; margin: 10px 0 0 400px;">
-      <option value="1">George Washington</option>
-      <option value="2">John Adams</option>
-      <option value="3">Thomas Jefferson</option>
-      <option value="4">James Madison</option>
-      <option value="5">James Monroe</option>
-      <option value="6">John Quincy Adams</option>
-      <option value="7">Andrew Jackson</option>
-      <option value="8">Martin Van Buren</option>
-      <option value="9">William Henry Harrison</option>
-      <option value="10">John Tyler</option>
-      <option value="11">James Knox Polk</option>
-      <option value="12">Zachary Taylor</option>
-      <option value="13">Millard Fillmore</option>
-      <option value="14">Franklin Pierce</option>
-      <option value="15">James Buchanan</option>
-      <option value="16">Abraham Lincoln</option>
-      <option value="17">Andrew Johnson</option>
-      <option value="18">Ulysses S. Grant</option>
-      <option value="19">Rutherford B. Hayes</option>
-      <option value="20">James Garfield</option>
-      <option value="21">Chester Arthur</option>
-      <option value="22">Grover Cleveland</option>
-      <option value="23">Benjamin Harrison</option>
-      <option value="24">Grover Cleveland</option>
-      <option value="25">William McKinley</option>
-      <option value="26">Theodore Roosevelt</option>
-      <option value="27">William Howard Taft</option>
-      <option value="28">Woodrow Wilson</option>
-      <option value="29">Warren Harding</option>
-      <option value="30">Calvin Coolidge</option>
-      <option value="31">Herbert Hoover</option>
-      <option value="32">Franklin D. Roosevelt</option>
-      <option value="33">Harry S Truman</option>
-      <option value="34">Dwight D. Eisenhower</option>
-      <option value="35">John F. Kennedy</option>
-      <option value="36">Lyndon Johnson</option>
-      <option value="37">Richard Nixon</option>
-      <option value="38">Gerald Ford</option>
-      <option value="39">James Carter</option>
-      <option value="40">Ronald Reagan</option>
-      <option value="41">George H. W. Bush</option>
-      <option value="42">William J. Clinton</option>
-      <option value="43">George W. Bush</option>
-      <option value="44">Barack H. Obama</option>
-    </select>
+      <label style="margin: 75px 0 0 400px;">Pick a US President: <em>(Start typing...)</em></label>
+      <select id="president" class="flexselect" name="president"  tabindex="2" style="font-size: 1.5em; 10px; margin: 10px 0 0 400px;">
+        <option value="1">George Washington</option>
+        <option value="2">John Adams</option>
+        <option value="3">Thomas Jefferson</option>
+        <option value="4">James Madison</option>
+        <option value="5">James Monroe</option>
+        <option value="6">John Quincy Adams</option>
+        <option value="7">Andrew Jackson</option>
+        <option value="8">Martin Van Buren</option>
+        <option value="9">William Henry Harrison</option>
+        <option value="10">John Tyler</option>
+        <option value="11">James Knox Polk</option>
+        <option value="12">Zachary Taylor</option>
+        <option value="13">Millard Fillmore</option>
+        <option value="14">Franklin Pierce</option>
+        <option value="15">James Buchanan</option>
+        <option value="16">Abraham Lincoln</option>
+        <option value="17">Andrew Johnson</option>
+        <option value="18">Ulysses S. Grant</option>
+        <option value="19">Rutherford B. Hayes</option>
+        <option value="20">James Garfield</option>
+        <option value="21">Chester Arthur</option>
+        <option value="22">Grover Cleveland</option>
+        <option value="23">Benjamin Harrison</option>
+        <option value="24">Grover Cleveland</option>
+        <option value="25">William McKinley</option>
+        <option value="26">Theodore Roosevelt</option>
+        <option value="27">William Howard Taft</option>
+        <option value="28">Woodrow Wilson</option>
+        <option value="29">Warren Harding</option>
+        <option value="30">Calvin Coolidge</option>
+        <option value="31">Herbert Hoover</option>
+        <option value="32">Franklin D. Roosevelt</option>
+        <option value="33">Harry S Truman</option>
+        <option value="34">Dwight D. Eisenhower</option>
+        <option value="35">John F. Kennedy</option>
+        <option value="36">Lyndon Johnson</option>
+        <option value="37">Richard Nixon</option>
+        <option value="38">Gerald Ford</option>
+        <option value="39">James Carter</option>
+        <option value="40">Ronald Reagan</option>
+        <option value="41">George H. W. Bush</option>
+        <option value="42">William J. Clinton</option>
+        <option value="43">George W. Bush</option>
+        <option value="44">Barack H. Obama</option>
+      </select>
 
-    <div style="position:absolute; top:300px; left:100px; z-index:100; text-align:left;">
-      <div style="position:relative; background-color:#ccc; padding:10px;">
-        <div style="width:500px; height:100px;">
-          <select id="animal" name="animal" class="flexselect" tabindex="3">
-            <option value="a">angelfish</option>
-            <option value="b">buffalo</option>
-            <option value="c">canary</option>
-            <option value="d">dinosaur</option>
-            <option value="e">eel</option>
-            <option value="f">flamingo</option>
-            <option value="g">goldfish</option>
-            <option value="h">hippo</option>
-            <option value="i">iguana</option>
-            <option value="j">jellyfish</option>
-            <option value="k">kangaroo</option>
-            <option value="l">llama</option>
-            <option value="m">moose</option>
-            <option value="n">narwhal</option>
-            <option value="o">ostrich</option>
-            <option value="p">pelican</option>
-            <option value="q">quail</option>
-            <option value="r">raccoon</option>
-            <option value="s">snail</option>
-            <option value="t">toucan</option>
-            <option value="u">unicorn</option>
-            <option value="v">vulture</option>
-            <option value="w">wildebeest</option>
-            <option value="f">fox</option>
-            <option value="x">xenopus</option>
-            <option value="y">yak</option>
-            <option value="z">zebra</option>
-          </select>
-          <p>This is an absolute positioned div</p>
+      <div style="position:absolute; top:300px; left:100px; z-index:100; text-align:left;">
+        <div style="position:relative; background-color:#ccc; padding:10px;">
+          <div style="width:500px; height:100px;">
+            <select id="animal" name="animal" class="flexselect" tabindex="3">
+              <option value="a">angelfish</option>
+              <option value="b">buffalo</option>
+              <option value="c">canary</option>
+              <option value="d">dinosaur</option>
+              <option value="e">eel</option>
+              <option value="f">flamingo</option>
+              <option value="g">goldfish</option>
+              <option value="h">hippo</option>
+              <option value="i">iguana</option>
+              <option value="j">jellyfish</option>
+              <option value="k">kangaroo</option>
+              <option value="l">llama</option>
+              <option value="m">moose</option>
+              <option value="n">narwhal</option>
+              <option value="o">ostrich</option>
+              <option value="p">pelican</option>
+              <option value="q">quail</option>
+              <option value="r">raccoon</option>
+              <option value="s">snail</option>
+              <option value="t">toucan</option>
+              <option value="u">unicorn</option>
+              <option value="v">vulture</option>
+              <option value="w">wildebeest</option>
+              <option value="f">fox</option>
+              <option value="x">xenopus</option>
+              <option value="y">yak</option>
+              <option value="z">zebra</option>
+            </select>
+            <p>This is an absolute positioned div</p>
+          </div>
         </div>
       </div>
-    </div>
+      <input type="submit" value="Go" style="margin: 250px auto 0;" tabindex="4"/>
+    <form>
   </body>
 </html>
 
