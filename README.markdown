@@ -48,6 +48,7 @@ into a bad-ass autocompleting text box with flex matching support.
 
 ## Todo
 
+* Review the "picked" logic
 * Fix selectedIndex when mouse happens to sit over dropdown during incremental
   find (perhaps unbind mouseover during filtering until a mousemove).
 * Add templating support for matched list output.
