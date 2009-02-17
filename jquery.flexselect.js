@@ -90,9 +90,8 @@
 
       this.input.focus(function() {
         self.abbreviationBeforeFocus = self.input.val();
-        self.picked = false;
         self.input.select();
-        self.filterResults();
+        if (!self.picked) self.filterResults();
       });
 
       this.input.blur(function() {
@@ -185,6 +184,7 @@
       this.renderDropdown();
       this.markFirst();
       this.lastAbbreviation = abbreviation;
+      this.picked = false;
     },
 
     sortResults: function() {
@@ -223,12 +223,12 @@
       if (selected) {
         this.input.val(selected.name);
         this.hidden.val(selected.value);
+        this.picked = true;
       } else if (this.settings.allowMismatch) {
         this.hidden.val("");
       } else {
         this.reset();
       }
-      this.picked = true;
     },
 
     hide: function() {
