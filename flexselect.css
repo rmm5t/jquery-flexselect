@@ -5,7 +5,9 @@
   margin: 0;
 	padding: 0;
 	border: 1px solid WindowFrame;
-	overflow: hidden;
+  max-height: 200px;
+  overflow-x: hidden;
+  overflow-y: auto;
 	background-color: Window;
   color: WindowText;
   text-align: left;
