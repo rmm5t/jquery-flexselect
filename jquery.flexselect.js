@@ -29,6 +29,7 @@
     input: null,
     hidden: null,
     dropdown: null,
+    dropdownList: null,
     cache: [],
     results: [],
     lastAbbreviation: null,
@@ -67,9 +68,11 @@
         style: this.select.attr("style")
       }).addClass(this.select.attr("class")).val($.trim(selected.text()));
 
-      this.dropdown = $("<div><ul></ul></div>").attr({
+      this.dropdown = $("<div></div>").attr({
         id: this.settings.dropdownIdTransform(this.select.attr("id"))
       }).addClass(this.settings.dropdownClass);
+      this.dropdownList = $("<ul></ul>");
+      this.dropdown.append(this.dropdownList);
 
       this.select.after(this.input).after(this.hidden).remove();
       $("body").append(this.dropdown);
@@ -101,23 +104,27 @@
         }
       });
 
-      this.dropdown.mouseover(function (event) {
+      this.dropdownList.mouseover(function (event) {
         if (event.target.tagName == "LI") {
           var rows = self.dropdown.find("li");
           self.markSelected(rows.index($(event.target)));
         }
+      });
+      this.dropdownList.mouseleave(function () {
+        self.markSelected(-1);
+      });
+      this.dropdownList.mouseup(function (event) {
+        self.pickSelected();
+        self.focusAndHide();
+      });
+      this.dropdown.mouseover(function (event) {
         self.dropdownMouseover = true;
       });
-      this.dropdown.mouseleave(function () {
-        self.markSelected(-1);
+      this.dropdown.mouseleave(function (event) {
         self.dropdownMouseover = false;
       });
       this.dropdown.mousedown(function (event) {
         event.preventDefault();
-      });
-      this.dropdown.mouseup(function (event) {
-        self.pickSelected();
-        self.focusAndHide();
       });
 
       this.input.keyup(function(event) {
@@ -200,7 +207,7 @@
         left: inputOffset.left + "px"
       });
 
-      var list = this.dropdown.children("ul").html("");
+      var list = this.dropdownList.html("");
       $.each(this.results, function() {
         // list.append($("<li/>").html(this.name + " <small>[" + Math.round(this.score*100)/100 + "]</small>"));
         list.append($("<li/>").html(this.name));
