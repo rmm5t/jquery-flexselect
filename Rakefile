@@ -21,6 +21,7 @@ file package.package_dir_path do
   sh("sed -e 's/%RELEASE_VERSION%/#{package.version}/g' -e 's/%RELEASE_DATE%/#{Date.today}/g' #{input} > #{output}")
 end
 
+desc "Publish a release to the wild"
 task :publish do
   sh("git rebase master gh-pages")
   sh("git checkout master")
@@ -28,9 +29,10 @@ task :publish do
   sh("git push --tags")
 end
 
+desc "Construct a new release package, and optionally tag the repository"
 task :release => :repackage do
   if agree("Create a tag?", true)
     sh("git tag 'v#{package.version}'")
-    puts("\n *** Don't forget to `git push --tags` ***")
+    puts("\n *** Don't forget to `rake publish` ***")
   end
 end
