@@ -53,6 +53,7 @@ into a bad-ass autocompleting text box with flex matching support.
   find (perhaps unbind mouseover during filtering until a mousemove).
 * Add templating support for matched list output.
 * Add highlighting of matched characters in the results.
+* Consider support for optgroup tags
 
 ## Author
 
