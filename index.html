@@ -121,11 +121,36 @@ jQuery(document).ready(function() {
   ...
 &lt;/select&gt;</pre>
 
-      <p class="how">
+      <p>
         Flexselect also supports some options to override the default behavior:
       </p>
       <p class="how">
-        <i>TODO: Add a detailed list of the options</i>
+        <strong>Experimental Ad Hoc Entry:</strong> It's possible to allow ad hoc entries into a flexselect input field that don't match the values in the underlying select box.  Suppose you had a select box like this:
+      </p>
+
+        <pre>
+&lt;select name=&quot;email&quot; class=&quot;flexselect&quot;&gt; ... &lt;/select&gt;</pre>
+
+      <p class="how">
+If you enable flexselect with custom options that look like this:
+      </p>
+
+        <pre>
+$("select.flexselect").flexselect({
+  allowMismatch: true,
+  inputNameTransform:  function(name) { return "new_" + name; }
+});</pre>
+
+      <p>
+The input text field that replaces the select box will not only allow you to match custom values that weren't in the select box, but it will have a name attribute of <code>new_email</code> assigned to it.  You can customize the <code>inputNameTransform</code> function however you like.  The argument value passed to it is the original name from the select box.
+      </p>
+
+      <p>
+When the form is submitted (with allowMismatch set to true), the original <code>email</code> param will be an empty string and the <code>new_email</code> param will be the value of the text in the input box.
+      </p>
+
+      <p>
+        <i>TODO: Add a detailed list of all the options</i>
       </p>
 
       <h3>Where?</h3>
