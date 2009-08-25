@@ -22,7 +22,7 @@ Now, let's attach it to your select boxes on DOM ready:
 
     <pre>
       jQuery(document).ready(function() {
-        jQuery("select[class*=flexselect]).flexselect();
+        jQuery("select.flexselect).flexselect();
       });
     </pre>
 

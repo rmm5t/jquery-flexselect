@@ -18,7 +18,7 @@
     <script src="jquery.flexselect.js" type="text/javascript"></script>
     <script type="text/javascript">
       $(document).ready(function() {
-        $("select[class*=flexselect]").flexselect();
+        $("select.flexselect").flexselect();
         $("input:text:enabled:first").focus();
         $("form").submit(function() {
           alert($(this).serialize());

@@ -26,7 +26,7 @@
         $("#example2").example(animal, "dull");
         $("#example2").example(animal, "flexselect");
 
-        $("select[class*=flexselect]").flexselect();
+        $("select.flexselect").flexselect();
 
         $("input#president_flexselect_flexselect").val("")
         $("select").attr("tabindex", -1);
@@ -108,7 +108,7 @@
       </p>
       <pre>
 jQuery(document).ready(function() {
-  $("select[class*=flexselect]").flexselect();
+  $("select.flexselect").flexselect();
 });</pre>
       <p class="how">
         This will turn all <tt>select</tt> elements with a class of <tt>flexselect</tt> into a flex matching masterpiece:
