@@ -1,7 +1,7 @@
 .flexselect_dropdown {
   display: none;
   position: absolute;
-  z-index: 999;
+  z-index: 999999;
   margin: 0;
 	padding: 0;
 	border: 1px solid WindowFrame;
