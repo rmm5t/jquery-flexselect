@@ -1,5 +1,6 @@
-require 'rake/packagetask'
-require 'highline/import'
+require "bundler/setup"
+require "rake/packagetask"
+require "highline/import"
 
 verbose(true)
 

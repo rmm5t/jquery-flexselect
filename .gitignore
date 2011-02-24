@@ -1,3 +1,5 @@
 pkg
 .DS_Store
 notes.txt
+.bundle
+vendor/ruby
