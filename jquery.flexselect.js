@@ -39,7 +39,7 @@
     dropdownMouseover: false, // Workaround for poor IE behaviors
 
     init: function(select, options) {
-      $.extend(this.settings, options);
+      this.settings = $.extend({}, this.settings, options);
       this.select = $(select);
       this.preloadCache();
       this.renderControls();
