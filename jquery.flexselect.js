@@ -100,7 +100,7 @@
       this.input.blur(function() {
         if (!self.dropdownMouseover) {
           self.hide();
-          if (!this.settings.allowMismatch && !self.picked) self.reset();
+          if (!self.settings.allowMismatch && !self.picked) self.reset();
         }
       });
 
