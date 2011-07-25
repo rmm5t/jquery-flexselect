@@ -21,6 +21,7 @@
       allowMismatch: false,
       selectedClass: "flexselect_selected",
       dropdownClass: "flexselect_dropdown",
+      inputSelected:       function( item ){ return; },
       inputIdTransform:    function(id)   { return id + "_flexselect"; },
       inputNameTransform:  function(name) { return; },
       dropdownIdTransform: function(id)   { return id + "_flexselect_dropdown"; }
@@ -231,6 +232,7 @@
         this.input.val(selected.name);
         this.hidden.val(selected.value);
         this.picked = true;
+        this.settings.inputSelected( selected );
       } else if (this.settings.allowMismatch) {
         this.hidden.val("");
       } else {
