@@ -21,6 +21,7 @@
       allowMismatch: false,
       selectedClass: "flexselect_selected",
       dropdownClass: "flexselect_dropdown",
+      placeholder: '',
       inputSelected:       function( item ){ return; },
       inputIdTransform:    function(id)   { return id + "_flexselect"; },
       inputNameTransform:  function(name) { return; },
@@ -61,7 +62,7 @@
         name: this.select.attr("name")
       }).val(selected.val());
 
-      this.input = $("<input type='text' autocomplete='off' />").attr({
+      this.input = $("<input type='text' autocomplete='off' placeholder='" + this.settings.placeholder + "' />").attr({
         id: this.settings.inputIdTransform(this.select.attr("id")),
         name: this.settings.inputNameTransform(this.select.attr("name")),
         accesskey: this.select.attr("accesskey"),
