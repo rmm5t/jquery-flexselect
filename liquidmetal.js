@@ -1,5 +1,5 @@
-/*
- * LiquidMetal, version: 0.1 (2009-02-05)
+/**
+ * LiquidMetal, version: 1.0 (2011-12-17)
  *
  * A mimetic poly-alloy of Quicksilver's scoring algorithm, essentially
  * LiquidMetal.
@@ -10,9 +10,9 @@
  * Licensed under the MIT:
  * http://www.opensource.org/licenses/mit-license.php
  *
- * Copyright (c) 2009, Ryan McGeary (ryanonjavascript -[at]- mcgeary [*dot*] org)
+ * Copyright (c) 2009-2012, Ryan McGeary (ryan -[at]- mcgeary [*dot*] org)
  */
-var LiquidMetal = function() {
+var LiquidMetal = (function() {
   var SCORE_NO_MATCH = 0.0;
   var SCORE_MATCH = 1.0;
   var SCORE_TRAILING = 0.8;
@@ -22,13 +22,16 @@ var LiquidMetal = function() {
   return {
     score: function(string, abbreviation) {
       // Short circuits
-      if (abbreviation.length == 0) return SCORE_TRAILING;
+      if (abbreviation.length === 0) return SCORE_TRAILING;
       if (abbreviation.length > string.length) return SCORE_NO_MATCH;
 
       var scores = this.buildScoreArray(string, abbreviation);
 
+      // complete miss:
+      if ( scores === false )  return 0;
+
       var sum = 0.0;
-      for (var i in scores) {
+      for (var i = 0; i < scores.length; i++) {
         sum += scores[i];
       }
 
@@ -38,15 +41,16 @@ var LiquidMetal = function() {
     buildScoreArray: function(string, abbreviation) {
       var scores = new Array(string.length);
       var lower = string.toLowerCase();
-      var chars = abbreviation.toLowerCase().split("");
+      var chars = abbreviation.toLowerCase();
 
       var lastIndex = -1;
       var started = false;
-      for (var i in chars) {
+      for (var i = 0; i < chars.length; i++) {
         var c = chars[i];
         var index = lower.indexOf(c, lastIndex+1);
-        if (index < 0) return fillArray(scores, SCORE_NO_MATCH);
-        if (index == 0) started = true;
+
+        if (index === -1) return false; // signal no match
+        if (index === 0) started = true;
 
         if (isNewWord(string, index)) {
           scores[index-1] = 1;
@@ -64,7 +68,7 @@ var LiquidMetal = function() {
       }
 
       var trailingScore = started ? SCORE_TRAILING_BUT_STARTED : SCORE_TRAILING;
-      fillArray(scores, trailingScore, lastIndex+1);
+      fillArray(scores, trailingScore, lastIndex+1, scores.length);
       return scores;
     }
   };
@@ -80,9 +84,7 @@ var LiquidMetal = function() {
   }
 
   function fillArray(array, value, from, to) {
-    from = Math.max(from || 0, 0);
-    to = Math.min(to || array.length, array.length);
     for (var i = from; i < to; i++) { array[i] = value; }
     return array;
   }
-}();
+})();

@@ -1,4 +1,4 @@
-/*
+/**
  * flexselect: a jQuery plugin, version: %RELEASE_VERSION% (%RELEASE_DATE%)
  * @requires jQuery v1.3 or later
  *
@@ -11,7 +11,7 @@
  * Licensed under the MIT:
  * http://www.opensource.org/licenses/mit-license.php
  *
- * Copyright (c) 2009, Ryan McGeary (ryanonjavascript -[at]- mcgeary [*dot*] org)
+ * Copyright (c) 2009-2012, Ryan McGeary (ryan -[at]- mcgeary [*dot*] org)
  */
 (function($) {
   $.flexselect = function(select, options) { this.init(select, options); };
