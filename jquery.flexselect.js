@@ -19,6 +19,7 @@
   $.extend($.flexselect.prototype, {
     settings: {
       allowMismatch: false,
+	  hideDropdownListIfNoInput: false, 
       selectedClass: "flexselect_selected",
       dropdownClass: "flexselect_dropdown",
       inputIdTransform:    function(id)   { return id + "_flexselect"; },
@@ -102,6 +103,8 @@
           self.hide();
           if (!self.settings.allowMismatch && !self.picked) self.reset();
         }
+		if(self.settings.hideDropdownListIfNoInput)
+			self.dropdownList.show();
       });
 
       this.dropdownList.mouseover(function (event) {
@@ -143,6 +146,12 @@
             self.filterResults();
             break;
         }
+		if(self.settings.hideDropdownListIfNoInput){
+			if(self.input.val() == "")
+				self.dropdownList.hide();
+			else
+				self.dropdownList.show();
+		}
       });
 
       this.input.keydown(function(event) {
