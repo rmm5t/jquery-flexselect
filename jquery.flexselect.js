@@ -205,7 +205,7 @@
     },
     
     sortResultsByName: function() {
-      this.results.sort(function(a, b) { return a.name < b.name ? -1 : (a.name > b.name ? 1 : 0) });
+      this.results.sort(function(a, b) { return a.name < b.name ? -1 : (a.name > b.name ? 1 : 0); });
     },
 
     renderDropdown: function() {
