@@ -103,8 +103,10 @@
       this.input.blur(function() {
         if (!self.dropdownMouseover) {
           self.hide();
-        if (!self.settings.allowMismatch && !self.picked && (!self.settings.allowMismatchBlank || $.trim($(this).val()) != ''))
-          self.reset();
+          if (self.settings.allowMismatchBlank && $.trim($(this).val()) == '')
+            return self.hidden.val('');
+          if (!self.settings.allowMismatch && !self.picked)
+            self.reset();
         }
       });
 
