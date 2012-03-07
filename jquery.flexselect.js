@@ -19,6 +19,8 @@
   $.extend($.flexselect.prototype, {
     settings: {
       allowMismatch: false,
+      sortBy: 'score', // 'score' || 'name'
+      preSelection: true,
       selectedClass: "flexselect_selected",
       dropdownClass: "flexselect_dropdown",
       inputIdTransform:    function(id)   { return id + "_flexselect"; },
@@ -53,12 +55,12 @@
     },
 
     renderControls: function() {
-      var selected = this.select.children("option:selected");
+      var selected = this.settings.preSelection ? this.select.children("option:selected") : null;
 
       this.hidden = $("<input type='hidden'/>").attr({
         id: this.select.attr("id"),
         name: this.select.attr("name")
-      }).val(selected.val());
+      }).val(selected ? selected.val() : '');
 
       this.input = $("<input type='text' autocomplete='off' />").attr({
         id: this.settings.inputIdTransform(this.select.attr("id")),
@@ -66,7 +68,7 @@
         accesskey: this.select.attr("accesskey"),
         tabindex: this.select.attr("tabindex"),
         style: this.select.attr("style")
-      }).addClass(this.select.attr("class")).val($.trim(selected.text()));
+      }).addClass(this.select.attr("class")).val($.trim(selected ? selected.text():  ''));
 
       this.dropdown = $("<div></div>").attr({
         id: this.settings.dropdownIdTransform(this.select.attr("id"))
@@ -187,16 +189,23 @@
       });
       this.results = results;
 
-      this.sortResults();
+      if (this.settings.sortBy == 'score')
+        this.sortResultsByScore();
+      else
+      this.sortResultsByName();
       this.renderDropdown();
       this.markFirst();
       this.lastAbbreviation = abbreviation;
       this.picked = false;
     },
 
-    sortResults: function() {
+    sortResultsByScore: function() {
       this.results.sort(function(a, b) { return b.score - a.score; });
     },
+    
+    sortResultsByName: function() {
+	  this.results.sort(function(a, b) { return a.name < b.name ? -1 : (a.name > b.name ? 1 : 0) });
+	},
 
     renderDropdown: function() {
       var dropdownBorderWidth = this.dropdown.outerWidth() - this.dropdown.innerWidth();
@@ -209,7 +218,7 @@
 
       var list = this.dropdownList.html("");
       $.each(this.results, function() {
-        // list.append($("<li/>").html(this.name + " <small>[" + Math.round(this.score*100)/100 + "]</small>"));
+    	// list.append($("<li/>").html(this.name + " <small>[" + Math.round(this.score*100)/100 + "]</small>"));
         list.append($("<li/>").html(this.name));
       });
       this.dropdown.show();
