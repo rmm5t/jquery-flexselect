@@ -19,6 +19,7 @@
   $.extend($.flexselect.prototype, {
     settings: {
       allowMismatch: false,
+      allowMismatchBlank: true, // If "true" a user can backspace such that the value is nothing (even if no blank value was provided in the original criteria)
       sortBy: 'score', // 'score' || 'name'
       preSelection: true,
       selectedClass: "flexselect_selected",
@@ -102,7 +103,8 @@
       this.input.blur(function() {
         if (!self.dropdownMouseover) {
           self.hide();
-          if (!self.settings.allowMismatch && !self.picked) self.reset();
+        if (!self.settings.allowMismatch && !self.picked && (self.settings.allowMismatchBlank && $.trim($(this).val()) != ''))
+          self.reset();
         }
       });
 
