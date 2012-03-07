@@ -103,7 +103,7 @@
       this.input.blur(function() {
         if (!self.dropdownMouseover) {
           self.hide();
-        if (!self.settings.allowMismatch && !self.picked && (self.settings.allowMismatchBlank && $.trim($(this).val()) != ''))
+        if (!self.settings.allowMismatch && !self.picked && (!self.settings.allowMismatchBlank || $.trim($(this).val()) != ''))
           self.reset();
         }
       });
@@ -221,7 +221,7 @@
 
       var list = this.dropdownList.html("");
       $.each(this.results, function() {
-    	// list.append($("<li/>").html(this.name + " <small>[" + Math.round(this.score*100)/100 + "]</small>"));
+      // list.append($("<li/>").html(this.name + " <small>[" + Math.round(this.score*100)/100 + "]</small>"));
         list.append($("<li/>").html(this.name));
       });
       this.dropdown.show();
