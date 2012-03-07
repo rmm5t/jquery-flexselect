@@ -191,7 +191,7 @@
 
       if (this.settings.sortBy == 'score')
         this.sortResultsByScore();
-      else
+      else if (this.settings.sortBy == 'name')
         this.sortResultsByName();
 
       this.renderDropdown();
@@ -205,8 +205,8 @@
     },
     
     sortResultsByName: function() {
-	  this.results.sort(function(a, b) { return a.name < b.name ? -1 : (a.name > b.name ? 1 : 0) });
-	},
+      this.results.sort(function(a, b) { return a.name < b.name ? -1 : (a.name > b.name ? 1 : 0) });
+    },
 
     renderDropdown: function() {
       var dropdownBorderWidth = this.dropdown.outerWidth() - this.dropdown.innerWidth();
