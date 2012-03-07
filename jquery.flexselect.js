@@ -192,7 +192,8 @@
       if (this.settings.sortBy == 'score')
         this.sortResultsByScore();
       else
-      this.sortResultsByName();
+        this.sortResultsByName();
+
       this.renderDropdown();
       this.markFirst();
       this.lastAbbreviation = abbreviation;
