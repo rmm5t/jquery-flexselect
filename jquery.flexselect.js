@@ -39,6 +39,7 @@
     abbreviationBeforeFocus: null,
     selectedIndex: 0,
     picked: false,
+    allowMouseMove: true,
     dropdownMouseover: false, // Workaround for poor IE behaviors
 
     init: function(select, options) {
@@ -112,26 +113,31 @@
         }
       });
 
-      this.dropdownList.mouseover(function (event) {
-        if (event.target.tagName == "LI") {
+      this.dropdownList.mouseover(function(event) {
+        if (!self.allowMouseMove) {
+          self.allowMouseMove = true;
+    	  return;
+        }
+
+    	if (event.target.tagName == "LI") {
           var rows = self.dropdown.find("li");
           self.markSelected(rows.index($(event.target)));
         }
       });
-      this.dropdownList.mouseleave(function () {
+      this.dropdownList.mouseleave(function() {
         self.markSelected(-1);
       });
-      this.dropdownList.mouseup(function (event) {
+      this.dropdownList.mouseup(function(event) {
         self.pickSelected();
         self.focusAndHide();
       });
-      this.dropdown.mouseover(function (event) {
+      this.dropdown.mouseover(function(event) {
         self.dropdownMouseover = true;
       });
-      this.dropdown.mouseleave(function (event) {
+      this.dropdown.mouseleave(function(event) {
         self.dropdownMouseover = false;
       });
-      this.dropdown.mousedown(function (event) {
+      this.dropdown.mousedown(function(event) {
         event.preventDefault();
       });
 
@@ -204,6 +210,7 @@
       this.markFirst();
       this.lastAbbreviation = abbreviation;
       this.picked = false;
+      this.allowMouseMove = false;
     },
 
     sortResultsByScore: function() {
@@ -218,15 +225,15 @@
       var dropdownBorderWidth = this.dropdown.outerWidth() - this.dropdown.innerWidth();
       var inputOffset = this.input.offset();
       this.dropdown.css({
-		  width: (this.input.outerWidth() - dropdownBorderWidth) + "px",
-		  top: (inputOffset.top + this.input.outerHeight()) + "px",
-	      left: inputOffset.left + "px",
-	      maxHeight: ''
-	    });
+        width: (this.input.outerWidth() - dropdownBorderWidth) + "px",
+        top: (inputOffset.top + this.input.outerHeight()) + "px",
+        left: inputOffset.left + "px",
+        maxHeight: ''
+      });
 
       var html = '';
       $.each(this.results, function() {
-    	 //html += '<li>' + this.name + ' <small>[' + Math.round(this.score*100)/100 + ']</small></li>';
+        //html += '<li>' + this.name + ' <small>[' + Math.round(this.score*100)/100 + ']</small></li>';
         html += '<li>' + this.name + '</li>';
       });
       this.dropdownList.html(html);
@@ -250,10 +257,13 @@
       var row = $(rows[n]).addClass(this.settings.selectedClass);
       var top = row.position().top;
       var delta = top + row.outerHeight() - this.dropdown.height();
-      if (delta > 0)
+      if (delta > 0) {
+        this.allowMouseMove = false;
         this.dropdown.scrollTop(this.dropdown.scrollTop() + delta);
-      else if (top < 0)
+      } else if (top < 0) {
+        this.allowMouseMove = false;
         this.dropdown.scrollTop(Math.max(0, this.dropdown.scrollTop() + top));
+      }
     },
 
     pickSelected: function() {

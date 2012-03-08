@@ -3,3 +3,4 @@ pkg
 notes.txt
 .bundle
 vendor/ruby
+.project
