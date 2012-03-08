@@ -72,7 +72,7 @@
       }).addClass(this.select.attr("class")).val($.trim(selected ? selected.text():  '')).css({
         visibility: 'visible'
       });
-      
+
       this.dropdown = $("<div></div>").attr({
         id: this.settings.dropdownIdTransform(this.select.attr("id"))
       }).addClass(this.settings.dropdownClass);
@@ -217,18 +217,26 @@
     renderDropdown: function() {
       var dropdownBorderWidth = this.dropdown.outerWidth() - this.dropdown.innerWidth();
       var inputOffset = this.input.offset();
-      this.dropdown.css({
-        width: (this.input.outerWidth() - dropdownBorderWidth) + "px",
-        top: (inputOffset.top + this.input.outerHeight()) + "px",
-        left: inputOffset.left + "px"
-      });
+	    this.dropdown.css({
+		  width: (this.input.outerWidth() - dropdownBorderWidth) + "px",
+		  top: (inputOffset.top + this.input.outerHeight()) + "px",
+	      left: inputOffset.left + "px",
+	      maxHeight: ''
+	    });
 
       var list = this.dropdownList.html("");
       $.each(this.results, function() {
-      // list.append($("<li/>").html(this.name + " <small>[" + Math.round(this.score*100)/100 + "]</small>"));
+    	  // list.append($("<li/>").html(this.name + " <small>[" + Math.round(this.score*100)/100 + "]</small>"));
         list.append($("<li/>").html(this.name));
       });
+      this.adjustMaxHeight();
       this.dropdown.show();
+    },
+    
+    adjustMaxHeight: function() {
+      var maxTop = $(window).height() + $(window).scrollTop() - this.dropdown.outerHeight();
+      var top = parseInt(this.dropdown.css('top'), 10);
+      this.dropdown.css('max-height', top > maxTop ? (Math.max(0, maxTop - top + this.dropdown.innerHeight()) + 'px') : '');
     },
 
     markSelected: function(n) {
