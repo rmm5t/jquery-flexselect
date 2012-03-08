@@ -241,13 +241,19 @@
     },
 
     markSelected: function(n) {
-      if (n > this.results.length) return;
+      if (n < 0 || n >= this.results.length) return;
 
       var rows = this.dropdown.find("li");
       rows.removeClass(this.settings.selectedClass);
       this.selectedIndex = n;
 
-      if (n >= 0) $(rows[n]).addClass(this.settings.selectedClass);
+      var row = $(rows[n]).addClass(this.settings.selectedClass);
+      var top = row.position().top;
+      var delta = top + row.outerHeight() - this.dropdown.height();
+      if (delta > 0)
+        this.dropdown.scrollTop(this.dropdown.scrollTop() + delta);
+      else if (top < 0)
+        this.dropdown.scrollTop(Math.max(0, this.dropdown.scrollTop() + top));
     },
 
     pickSelected: function() {
