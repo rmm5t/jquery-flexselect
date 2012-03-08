@@ -217,18 +217,19 @@
     renderDropdown: function() {
       var dropdownBorderWidth = this.dropdown.outerWidth() - this.dropdown.innerWidth();
       var inputOffset = this.input.offset();
-	    this.dropdown.css({
+      this.dropdown.css({
 		  width: (this.input.outerWidth() - dropdownBorderWidth) + "px",
 		  top: (inputOffset.top + this.input.outerHeight()) + "px",
 	      left: inputOffset.left + "px",
 	      maxHeight: ''
 	    });
 
-      var list = this.dropdownList.html("");
+      var html = '';
       $.each(this.results, function() {
-    	  // list.append($("<li/>").html(this.name + " <small>[" + Math.round(this.score*100)/100 + "]</small>"));
-        list.append($("<li/>").html(this.name));
+    	 //html += '<li>' + this.name + ' <small>[' + Math.round(this.score*100)/100 + ']</small></li>';
+        html += '<li>' + this.name + '</li>';
       });
+      this.dropdownList.html(html);
       this.adjustMaxHeight();
       this.dropdown.show();
     },
