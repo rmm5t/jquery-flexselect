@@ -1,5 +1,5 @@
 /**
- * LiquidMetal, version: 1.2 (2012-03-28)
+ * LiquidMetal, version: 1.2.1 (2012-04-21)
  *
  * A mimetic poly-alloy of Quicksilver's scoring algorithm, essentially
  * LiquidMetal.
@@ -18,7 +18,7 @@ var LiquidMetal = (function() {
   var SCORE_TRAILING = 0.8;
   var SCORE_TRAILING_BUT_STARTED = 0.9;
   var SCORE_BUFFER = 0.85;
-  var WORD_SEPARATORS = [" ", "\t", "_", "-"];
+  var WORD_SEPARATORS = " \t_-";
 
   return {
     lastScore: null,
@@ -36,7 +36,7 @@ var LiquidMetal = (function() {
       this._scoreAll(string, search, abbrev, -1, 0, [], allScores);
 
       // complete miss
-      if (!allScores.length) return 0;
+      if (allScores.length == 0) return 0;
 
       // sum per-character scores into overall scores,
       // selecting the maximum score
@@ -65,7 +65,7 @@ var LiquidMetal = (function() {
       // save completed match scores at end of search
       if (abbrIndex == abbrev.length) {
         // add trailing score for the remainder of the match
-        var started = (search[0] == abbrev[0]);
+        var started = (search.charAt(0) == abbrev.charAt(0));
         var trailScore = started ? SCORE_TRAILING_BUT_STARTED : SCORE_TRAILING;
         fillArray(scores, trailScore, scores.length, string.length);
         // save score clone (since reference is persisted in scores)
@@ -74,7 +74,7 @@ var LiquidMetal = (function() {
       }
 
       // consume current char to match
-      var c = abbrev[abbrIndex];
+      var c = abbrev.charAt(abbrIndex);
       abbrIndex++;
 
       // cancel match if a character is missing
