@@ -26,7 +26,8 @@
       dropdownClass: "flexselect_dropdown",
       inputIdTransform:    function(id)   { return id + "_flexselect"; },
       inputNameTransform:  function(name) { return; },
-      dropdownIdTransform: function(id)   { return id + "_flexselect_dropdown"; }
+      dropdownIdTransform: function(id)   { return id + "_flexselect_dropdown"; },
+      onselect: function(name, value) {}
     },
     select: null,
     input: null,
@@ -272,6 +273,11 @@
         this.input.val(selected.name);
         this.hidden.val(selected.value);
         this.picked = true;
+
+        if(this.settings.onselect) {
+          this.settings.onselect(selected.name, selected.value);
+        }
+        
       } else if (this.settings.allowMismatch) {
         this.hidden.val("");
       } else {

@@ -110,6 +110,17 @@
 jQuery(document).ready(function() {
   $("select.flexselect").flexselect();
 });</pre>
+    <p class="how">
+      Add a Event to listen for changes.
+    </p>
+      <pre>
+jQuery(document).ready(function() {
+  $("select.flexselect").flexselect({
+  onselect: function(){
+  alert("You selected " + name_of_item + " with the value / id of " + value_of_item);
+}
+});
+});</pre>
       <p class="how">
         This will turn all <tt>select</tt> elements with a class of <tt>flexselect</tt> into a flex matching masterpiece:
       </p>
