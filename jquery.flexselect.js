@@ -22,6 +22,7 @@
       allowMismatchBlank: true, // If "true" a user can backspace such that the value is nothing (even if no blank value was provided in the original criteria)
       sortBy: 'score', // 'score' || 'name'
       preSelection: true,
+      placeholder: null,
       selectedClass: "flexselect_selected",
       dropdownClass: "flexselect_dropdown",
       inputIdTransform:    function(id)   { return id + "_flexselect"; },
@@ -69,7 +70,8 @@
         name: this.settings.inputNameTransform(this.select.attr("name")),
         accesskey: this.select.attr("accesskey"),
         tabindex: this.select.attr("tabindex"),
-        style: this.select.attr("style")
+        style: this.select.attr("style"),
+        placeholder: this.settings.placeholder
       }).addClass(this.select.attr("class")).val($.trim(selected ? selected.text():  '')).css({
         visibility: 'visible'
       });
