@@ -30,7 +30,6 @@
     },
     select: null,
     input: null,
-    hidden: null,
     dropdown: null,
     dropdownList: null,
     cache: [],
@@ -59,17 +58,13 @@
     renderControls: function() {
       var selected = this.settings.preSelection ? this.select.children("option:selected") : null;
 
-      this.hidden = $("<input type='hidden'/>").attr({
-        id: this.select.attr("id"),
-        name: this.select.attr("name")
-      }).val(selected ? selected.val() : '');
-
       this.input = $("<input type='text' autocomplete='off' />").attr({
         id: this.settings.inputIdTransform(this.select.attr("id")),
         name: this.settings.inputNameTransform(this.select.attr("name")),
         accesskey: this.select.attr("accesskey"),
         tabindex: this.select.attr("tabindex"),
-        style: this.select.attr("style")
+        style: this.select.attr("style"),
+        placeholder: this.select.attr("data-placeholder")
       }).addClass(this.select.attr("class")).val($.trim(selected ? selected.text():  '')).css({
         visibility: 'visible'
       });
@@ -80,7 +75,7 @@
       this.dropdownList = $("<ul></ul>");
       this.dropdown.append(this.dropdownList);
 
-      this.select.after(this.input).after(this.hidden).remove();
+      this.select.after(this.input).hide();
       $("body").append(this.dropdown);
     },
 
@@ -107,7 +102,7 @@
         if (!self.dropdownMouseover) {
           self.hide();
           if (self.settings.allowMismatchBlank && $.trim($(this).val()) == '')
-            return self.hidden.val('');
+            return this.setValue('');
           if (!self.settings.allowMismatch && !self.picked)
             self.reset();
         }
@@ -188,6 +183,13 @@
             break;
         }
       });
+
+      if (this.settings.preSelection) {
+        var input = this.input;
+        this.select.change(function () {
+          input.val($.trim($(this).children('option:selected').text()));
+        });
+      }
     },
 
     filterResults: function() {
@@ -270,13 +272,18 @@
       var selected = this.results[this.selectedIndex];
       if (selected) {
         this.input.val(selected.name);
-        this.hidden.val(selected.value);
+        this.setValue(selected.value);
         this.picked = true;
       } else if (this.settings.allowMismatch) {
-        this.hidden.val("");
+        this.setValue.val("");
       } else {
         this.reset();
       }
+    },
+    
+    setValue: function(val) {
+      if (this.select.val() === val) return;
+      this.select.val(val).change();
     },
 
     hide: function() {
