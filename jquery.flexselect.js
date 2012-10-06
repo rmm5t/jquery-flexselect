@@ -102,7 +102,7 @@
         if (!self.dropdownMouseover) {
           self.hide();
           if (self.settings.allowMismatchBlank && $.trim($(this).val()) == '')
-            return this.setValue('');
+            self.setValue('');
           if (!self.settings.allowMismatch && !self.picked)
             self.reset();
         }
