@@ -184,12 +184,10 @@
         }
       });
 
-      if (this.settings.preSelection) {
-        var input = this.input;
-        this.select.change(function () {
-          input.val($.trim($(this).children('option:selected').text()));
-        });
-      }
+      var input = this.input;
+      this.select.change(function () {
+        input.val($.trim($(this).children('option:selected').text()));
+      });
     },
 
     filterResults: function() {
