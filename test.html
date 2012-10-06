@@ -186,35 +186,35 @@
       <div style="position:absolute; top:300px; left:100px; z-index:100; text-align:left;">
         <div style="position:relative; background-color:#ccc; padding:10px;">
           <div style="width:500px; height:100px;">
-            <select id="animal" name="animal" class="flexselect" tabindex="3">
-              <option value="a">angelfish</option>
-              <option value="b">buffalo</option>
-              <option value="c">canary</option>
-              <option value="d">dinosaur</option>
-              <option value="e">eel</option>
-              <option value="f">fox</option>
-              <option value="g">goldfish</option>
-              <option value="h">hippo</option>
-              <option value="i">iguana</option>
-              <option value="j">jellyfish</option>
-              <option value="k">kangaroo</option>
-              <option value="l">llama</option>
-              <option value="m">moose</option>
-              <option value="n">narwhal</option>
-              <option value="o">ostrich</option>
-              <option value="p">pelican</option>
-              <option value="q">quail</option>
-              <option value="r">raccoon</option>
-              <option value="s">snail</option>
-              <option value="t">toucan</option>
-              <option value="u">unicorn</option>
-              <option value="v">vulture</option>
-              <option value="w">wildebeest</option>
-              <option value="x">xenopus</option>
-              <option value="y">yak</option>
-              <option value="z">zebra</option>
+            <select id="animal" name="animal" class="flexselect" tabindex="3" onchange="alert('You changed the animal to ' + $(this).val());">
+              <option value="angelfish">angelfish</option>
+              <option value="buffalo">buffalo</option>
+              <option value="canary">canary</option>
+              <option value="dinosaur">dinosaur</option>
+              <option value="eel">eel</option>
+              <option value="fox">fox</option>
+              <option value="goldfish">goldfish</option>
+              <option value="hippo">hippo</option>
+              <option value="iguana">iguana</option>
+              <option value="jellyfish">jellyfish</option>
+              <option value="kangaroo">kangaroo</option>
+              <option value="llama">llama</option>
+              <option value="moose">moose</option>
+              <option value="narwhal">narwhal</option>
+              <option value="ostrich">ostrich</option>
+              <option value="pelican">pelican</option>
+              <option value="quail">quail</option>
+              <option value="raccoon">raccoon</option>
+              <option value="snail">snail</option>
+              <option value="toucan">toucan</option>
+              <option value="unicorn">unicorn</option>
+              <option value="vulture">vulture</option>
+              <option value="wildebeest">wildebeest</option>
+              <option value="xenopus">xenopus</option>
+              <option value="yak">yak</option>
+              <option value="zebra">zebra</option>
             </select>
-            <p>This is an absolute positioned div</p>
+            <p>This is an absolute positioned div with an onchange handler on the original select element.</p>
           </div>
         </div>
       </div>
@@ -222,4 +222,3 @@
     <form>
   </body>
 </html>
-
