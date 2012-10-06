@@ -22,6 +22,7 @@
       allowMismatchBlank: true, // If "true" a user can backspace such that the value is nothing (even if no blank value was provided in the original criteria)
       sortBy: 'score', // 'score' || 'name'
       preSelection: true,
+      hideDropdownOnEmptyInput: false,
       selectedClass: "flexselect_selected",
       dropdownClass: "flexselect_dropdown",
       inputIdTransform:    function(id)   { return id + "_flexselect"; },
@@ -106,6 +107,8 @@
           if (!self.settings.allowMismatch && !self.picked)
             self.reset();
         }
+        if (self.settings.hideDropdownOnEmptyInput)
+          self.dropdownList.show();
       });
 
       this.dropdownList.mouseover(function(event) {
@@ -151,6 +154,12 @@
           default:
             self.filterResults();
             break;
+        }
+        if (self.settings.hideDropdownOnEmptyInput){
+          if(self.input.val() == "")
+            self.dropdownList.hide();
+          else
+            self.dropdownList.show();
         }
       });
 
