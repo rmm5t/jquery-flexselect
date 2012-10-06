@@ -111,10 +111,10 @@
       this.dropdownList.mouseover(function(event) {
         if (!self.allowMouseMove) {
           self.allowMouseMove = true;
-    	  return;
+          return;
         }
 
-    	if (event.target.tagName == "LI") {
+        if (event.target.tagName == "LI") {
           var rows = self.dropdown.find("li");
           self.markSelected(rows.index($(event.target)));
         }
@@ -218,7 +218,7 @@
     sortResultsByScore: function() {
       this.results.sort(function(a, b) { return b.score - a.score; });
     },
-    
+
     sortResultsByName: function() {
       this.results.sort(function(a, b) { return a.name < b.name ? -1 : (a.name > b.name ? 1 : 0); });
     },
@@ -242,7 +242,7 @@
       this.adjustMaxHeight();
       this.dropdown.show();
     },
-    
+
     adjustMaxHeight: function() {
       var maxTop = $(window).height() + $(window).scrollTop() - this.dropdown.outerHeight();
       var top = parseInt(this.dropdown.css('top'), 10);
@@ -280,7 +280,7 @@
         this.reset();
       }
     },
-    
+
     setValue: function(val) {
       if (this.select.val() === val) return;
       this.select.val(val).change();
