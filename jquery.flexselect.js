@@ -24,6 +24,8 @@
       preSelection: true,
       selectedClass: "flexselect_selected",
       dropdownClass: "flexselect_dropdown",
+      placeholder: '',
+      inputSelected:       function( item ){ return; },
       inputIdTransform:    function(id)   { return id + "_flexselect"; },
       inputNameTransform:  function(name) { return; },
       dropdownIdTransform: function(id)   { return id + "_flexselect_dropdown"; }
@@ -58,7 +60,7 @@
     renderControls: function() {
       var selected = this.settings.preSelection ? this.select.children("option:selected") : null;
 
-      this.input = $("<input type='text' autocomplete='off' />").attr({
+      this.input = $("<input type='text' autocomplete='off' placeholder='" + this.settings.placeholder + "' />").attr({
         id: this.settings.inputIdTransform(this.select.attr("id")),
         name: this.settings.inputNameTransform(this.select.attr("name")),
         accesskey: this.select.attr("accesskey"),
@@ -272,6 +274,7 @@
         this.input.val(selected.name);
         this.setValue(selected.value);
         this.picked = true;
+        this.settings.inputSelected( selected );
       } else if (this.settings.allowMismatch) {
         this.setValue.val("");
       } else {
