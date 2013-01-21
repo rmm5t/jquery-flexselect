@@ -14,7 +14,6 @@ end
 
 task :version do
   package.version = JSON.parse(File.read("flexselect.jquery.json"))["version"]
-  puts package.version
 end
 
 file package.package_dir_path do
@@ -26,19 +25,31 @@ end
 
 desc "Publish a release to the wild"
 task :publish do
-  sh("git checkout gh-pages")
-  sh("git merge master")
-  sh("git push")
-  sh("git checkout master")
-  sh("git push")
-  sh("git push --tags")
+  sh "git checkout gh-pages"
+  sh "git merge master"
+  sh "git push"
+  sh "git checkout master"
+  sh "git push"
+  sh "git push --tags"
 end
 
 desc "Construct a new release package, and optionally tag the repository"
-task :release => :repackage do
+task :release => [:rewrite_docs, :repackage] do
   if agree("Create a tag?", true)
     sh("git tag 'v#{package.version}'")
     puts("\n *** Don't forget to push the zip file to S3 ***")
     puts("\n *** Don't forget to `rake publish` ***")
   end
+end
+
+desc "Rewrite the downlaod location in the docs"
+task :rewrite_docs => :version do
+  docs = IO.read("index.html")
+  docs.sub!(/(download_url = "[^"]+)\/[^\/]+";/, "\\1/jquery.flexselect-#{package.version}.zip\";")
+  File.open("index.html", 'w') do |f|
+    f.write docs
+  end
+  sh "git add index.html"
+  sh "git add flexselect.jquery.json"
+  sh "git commit -m 'Bumped to v#{package.version}'"
 end
