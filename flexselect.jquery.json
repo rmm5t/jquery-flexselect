@@ -1,0 +1,32 @@
+{
+  "name": "flexselect",
+  "version": "0.5.1",
+  "title": "jQuery Flexselect",
+  "author": {
+    "name": "Ryan McGeary",
+    "email": "ryan@mcgeary.org",
+    "url": "http://ryan.mcgeary.org/"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "dependencies": {
+    "jquery": ">=1.3.0"
+  },
+  "description": "jQuery plugin that turns select boxes into flex-matching incremental-finding controls.",
+  "keywords": [
+    "select",
+    "dropdown",
+    "flex-matching",
+    "autocomplete"
+  ],
+  "homepage": "http://rmm5t.github.com/jquery-flexselect/",
+  "docs": "https://github.com/rmm5t/jquery-flexselect",
+  "demo": "http://rmm5t.github.com/jquery-flexselect/",
+  "download": "http://rmm5t.github.com/jquery-flexselect/",
+  "bugs": "https://github.com/rmm5t/jquery-flexselect/issues",
+  "maintainers": []
+}
