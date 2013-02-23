@@ -61,4 +61,4 @@ into a bad-ass autocompleting text box with flex matching support.
 
 [MIT License](http://www.opensource.org/licenses/mit-license.php)
 
-Copyright (c) 2009, Ryan McGeary (ryanonjavascript -[at]- mcgeary [*dot*] org)
+Copyright (c) 2009-2013, Ryan McGeary (ryan -[at]- mcgeary [*dot*] org)
