@@ -23,10 +23,10 @@
     "flex-matching",
     "autocomplete"
   ],
-  "homepage": "http://rmm5t.github.com/jquery-flexselect/",
+  "homepage": "http://rmm5t.github.io/jquery-flexselect/",
   "docs": "https://github.com/rmm5t/jquery-flexselect",
-  "demo": "http://rmm5t.github.com/jquery-flexselect/",
-  "download": "http://rmm5t.github.com/jquery-flexselect/",
+  "demo": "http://rmm5t.github.io/jquery-flexselect/",
+  "download": "http://rmm5t.github.io/jquery-flexselect/",
   "bugs": "https://github.com/rmm5t/jquery-flexselect/issues",
   "maintainers": []
 }

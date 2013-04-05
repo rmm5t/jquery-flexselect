@@ -6,7 +6,7 @@
  * a Quicksilver-style, autocompleting, flex matching selection tool.
  *
  * For usage and examples, visit:
- * http://rmm5t.github.com/jquery-flexselect/
+ * http://rmm5t.github.io/jquery-flexselect/
  *
  * Licensed under the MIT:
  * http://www.opensource.org/licenses/mit-license.php

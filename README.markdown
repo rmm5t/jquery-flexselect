@@ -37,7 +37,7 @@ This will turn all select elements with a `class` of `flexselect`:
 
 into a bad-ass autocompleting text box with flex matching support.
 
-**For more usage and examples**: [http://rmm5t.github.com/jquery-flexselect/](http://rmm5t.github.com/jquery-flexselect/)
+**For more usage and examples**: [http://rmm5t.github.io/jquery-flexselect/](http://rmm5t.github.io/jquery-flexselect/)
 
 ## Inspired by:
 
