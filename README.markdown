@@ -3,10 +3,11 @@
 FlexSelect is a jQuery plugin that turns select boxes into flex-matching
 incremental-finding controls.
 
-Flex matching a few keystrokes against longer strings is a boon in productivity
-for typists.  Applications like Quicksilver, LaunchBar, and Launchy have made
-this method of keyboard entry a popular one.  It's time to bring this same
-functionality to web controls.  FlexSelect does that for select boxes.
+Flex matching a few keystrokes against longer strings is a boon in
+productivity for typists. Applications like Quicksilver, LaunchBar, and
+Launchy have made this method of keyboard entry a popular one. It's time to
+bring this same functionality to web controls. FlexSelect does that for select
+boxes.
 
 ## Usage
 
