@@ -9,6 +9,11 @@ Launchy have made this method of keyboard entry a popular one. It's time to
 bring this same functionality to web controls. FlexSelect does that for select
 boxes.
 
+**If you like this project, please help by donating.**
+
+* Gittip: https://www.gittip.com/rmm5t/
+* Bitcoin: `1wzBnMjWVZfpiFMc5i2nzKT7sCBaZNfLK`
+
 ## Usage
 
 First, load [jQuery](http://jquery.com/), the
