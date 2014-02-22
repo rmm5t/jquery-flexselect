@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    highline (1.6.1)
+    highline (1.6.20)
 
 PLATFORMS
   ruby
