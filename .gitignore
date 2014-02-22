@@ -3,4 +3,5 @@ pkg
 notes.txt
 .bundle
 vendor/ruby
+vendor/cache
 .project
