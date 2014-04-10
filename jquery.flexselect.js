@@ -51,13 +51,13 @@
     },
 
     preloadCache: function() {
-      this.cache = this.select.children("option").map(function() {
+      this.cache = this.select.find("option").map(function() {
         return { name: $.trim($(this).text()), value: $(this).val(), score: 0.0 };
       });
     },
 
     renderControls: function() {
-      var selected = this.settings.preSelection ? this.select.children("option:selected") : null;
+      var selected = this.settings.preSelection ? this.select.find("option:selected") : null;
 
       this.input = $("<input type='text' autocomplete='off' />").attr({
         id: this.settings.inputIdTransform(this.select.attr("id")),
@@ -166,6 +166,7 @@
       this.input.keydown(function(event) {
         switch (event.keyCode) {
           case 9:  // tab
+            console.log("hello");
             self.pickSelected();
             self.hide();
             break;
@@ -195,7 +196,7 @@
 
       var input = this.input;
       this.select.change(function () {
-        input.val($.trim($(this).children('option:selected').text()));
+        input.val($.trim($(this).find('option:selected').text()));
       });
     },
 
