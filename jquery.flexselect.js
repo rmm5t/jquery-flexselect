@@ -166,7 +166,6 @@
       this.input.keydown(function(event) {
         switch (event.keyCode) {
           case 9:  // tab
-            console.log("hello");
             self.pickSelected();
             self.hide();
             break;
