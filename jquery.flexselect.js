@@ -41,6 +41,7 @@
     picked: false,
     allowMouseMove: true,
     dropdownMouseover: false, // Workaround for poor IE behaviors
+    indexOptgroupLabels: false,
 
     init: function(select, options) {
       this.settings = $.extend({}, this.settings, options);
@@ -51,8 +52,13 @@
     },
 
     preloadCache: function() {
+      var name, group, text;
+      var indexGroup = this.settings.indexOptgroupLabels;
       this.cache = this.select.find("option").map(function() {
-        return { name: $.trim($(this).text()), value: $(this).val(), score: 0.0 };
+        name = $(this).text();
+        group = $(this).parent("optgroup").attr("label");
+        text = indexGroup ? [name, group].join(" ") : name;
+        return { text: $.trim(text), name: $.trim(name), value: $(this).val(), score: 0.0 };
       });
     },
 
@@ -205,7 +211,7 @@
 
       var results = [];
       $.each(this.cache, function() {
-        this.score = LiquidMetal.score(this.name, abbreviation);
+        this.score = LiquidMetal.score(this.text, abbreviation);
         if (this.score > 0.0) results.push(this);
       });
       this.results = results;

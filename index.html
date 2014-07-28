@@ -22,14 +22,15 @@
 
         var president = $("select#president");
         $("#example1").example(president, "dull");
-        $("#example1").example(president, "flexselect");
+        $("#example1").example(president, "flexselect-optgroup");
         var animal = $("select#animal");
         $("#example2").example(animal, "dull");
         $("#example2").example(animal, "flexselect");
 
         $("select.flexselect").flexselect();
+        $("select.flexselect-optgroup").flexselect({ indexOptgroupLabels: true });
 
-        $("input#president_flexselect_flexselect").val("")
+        $("input#president_flexselect-optgroup_flexselect").val("")
         $("select").attr("tabindex", -1);
         $("input.flexselect").each(function(index) { $(this).attr("tabindex", index+1) });
       });
