@@ -12,8 +12,10 @@ package = Rake::PackageTask.new("jquery.flexselect", :noversion) do |p|
   p.package_files.include("*.js", "*.css", "*.html", "README.*")
 end
 
+jquery_package = JSON.parse(File.read("flexselect.jquery.json"))
+
 task :version do
-  package.version = JSON.parse(File.read("flexselect.jquery.json"))["version"]
+  package.version = jquery_package["version"]
 end
 
 file package.package_dir_path do
@@ -34,7 +36,7 @@ task :publish do
 end
 
 desc "Construct a new release package, and optionally tag the repository"
-task :release => [:rewrite_docs, :repackage] do
+task :release => [:rewrite_docs, :rewrite_bower, :commit, :repackage] do
   sh("git tag 'v#{package.version}'")
   puts("\n *** Don't forget to push the zip file to S3 ***")
   puts("\n *** Don't forget to `rake publish` ***")
@@ -44,10 +46,25 @@ desc "Rewrite the downlaod location in the docs"
 task :rewrite_docs => :version do
   docs = IO.read("index.html")
   docs.sub!(/(download_url = .+)-\d+\.\d+\.\d+.zip/, "\\1-#{package.version}.zip")
-  File.open("index.html", 'w') do |f|
-    f.write docs
-  end
+  File.open("index.html", "w") { |f| f.write docs }
+end
+
+desc "Rewrite the bower package manifest"
+task :rewrite_bower => :version do
+  bower = {
+    "name"         => "jquery-flexselect",
+    "version"      => package.version,
+    "main"         => "jquery.flexselect.js",
+    "ignore"       => [ "test", "vendor" ],
+    "dependencies" => { "jquery" => ">=1.4" }
+  }
+  File.open("bower.json", "w") { |f| f.write(JSON.pretty_generate(bower)) }
+end
+
+desc "Stage and commit versioning changes"
+task :commit => :version do
   sh "git add index.html"
   sh "git add flexselect.jquery.json"
+  sh "git add bower.json"
   sh "git commit -m 'Bumped to v#{package.version}'"
 end
