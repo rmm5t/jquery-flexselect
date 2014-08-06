@@ -27,7 +27,7 @@
         $("#example2").example(animal, "dull");
         $("#example2").example(animal, "flexselect");
 
-        $("select.flexselect").flexselect();
+        $("select.flexselect").flexselect({ showDisabledOptions: true });
         $("select.flexselect-optgroup").flexselect({ indexOptgroupLabels: true });
 
         $("input#president_flexselect-optgroup_flexselect").val("")
@@ -237,7 +237,7 @@ When the form is submitted (with allowMismatch set to true), the original <code>
         <option value="a">angelfish</option>
         <option value="b">buffalo</option>
         <option value="c" selected="selected">canary</option>
-        <option value="d">dinosaur</option>
+        <option value="d" disabled="disabled">dinosaur</option>
         <option value="e">eel</option>
         <option value="f">flamingo</option>
         <option value="g">goldfish</option>
@@ -254,7 +254,7 @@ When the form is submitted (with allowMismatch set to true), the original <code>
         <option value="r">raccoon</option>
         <option value="s">snail</option>
         <option value="t">toucan</option>
-        <option value="u">unicorn</option>
+        <option value="u" disabled="disabled">unicorn</option>
         <option value="v">vulture</option>
         <option value="w">wildebeest</option>
         <option value="f">fox</option>
