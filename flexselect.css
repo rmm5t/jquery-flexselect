@@ -33,6 +33,11 @@
 	overflow: hidden;
 }
 
+.flexselect_dropdown li.disabled {
+  cursor: not-allowed;
+  color: GrayText;
+}
+
 .flexselect_selected {
 	background-color: Highlight;
 	color: HighlightText;

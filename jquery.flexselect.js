@@ -25,6 +25,7 @@
       hideDropdownOnEmptyInput: false,
       selectedClass: "flexselect_selected",
       dropdownClass: "flexselect_dropdown",
+      showDisabledOptions: false,
       inputIdTransform:    function(id)   { return id + "_flexselect"; },
       inputNameTransform:  function(name) { return; },
       dropdownIdTransform: function(id)   { return id + "_flexselect_dropdown"; }
@@ -52,13 +53,14 @@
     },
 
     preloadCache: function() {
-      var name, group, text;
+      var name, group, text, disabled;
       var indexGroup = this.settings.indexOptgroupLabels;
       this.cache = this.select.find("option").map(function() {
         name = $(this).text();
         group = $(this).parent("optgroup").attr("label");
         text = indexGroup ? [name, group].join(" ") : name;
-        return { text: $.trim(text), name: $.trim(name), value: $(this).val(), score: 0.0 };
+        disabled = $(this).parent('optgroup[disabled]').size() != 0 || typeof $(this).attr('disabled') != 'undefined';
+        return { text: $.trim(text), name: $.trim(name), value: $(this).val(), disabled: disabled, score: 0.0 };
       });
     },
 
@@ -206,11 +208,13 @@
     },
 
     filterResults: function() {
+      var showDisabled = this.settings.showDisabledOptions;
       var abbreviation = this.input.val();
       if (abbreviation == this.lastAbbreviation) return;
 
       var results = [];
       $.each(this.cache, function() {
+        if (this.disabled && !showDisabled) return;
         this.score = LiquidMetal.score(this.text, abbreviation);
         if (this.score > 0.0) results.push(this);
       });
@@ -237,6 +241,7 @@
     },
 
     renderDropdown: function() {
+      var showDisabled = this.settings.showDisabledOptions;
       var dropdownBorderWidth = this.dropdown.outerWidth() - this.dropdown.innerWidth();
       var inputOffset = this.input.offset();
       this.dropdown.css({
@@ -249,7 +254,12 @@
       var html = '';
       $.each(this.results, function() {
         //html += '<li>' + this.name + ' <small>[' + Math.round(this.score*100)/100 + ']</small></li>';
-        html += '<li>' + this.name + '</li>';
+        if (this.disabled && !showDisabled) return;
+        else if (this.disabled && showDisabled) {
+          html += '<li class="disabled">' + this.name + '</li>';
+        } else {
+          html += '<li>' + this.name + '</li>';
+        }
       });
       this.dropdownList.html(html);
       this.adjustMaxHeight();
@@ -267,9 +277,15 @@
 
       var rows = this.dropdown.find("li");
       rows.removeClass(this.settings.selectedClass);
-      this.selectedIndex = n;
 
-      var row = $(rows[n]).addClass(this.settings.selectedClass);
+      var row = $(rows[n]);
+      if (row.hasClass('disabled')) {
+        this.selectedIndex = null;
+        return;
+      }
+
+      this.selectedIndex = n;
+      row.addClass(this.settings.selectedClass);
       var top = row.position().top;
       var delta = top + row.outerHeight() - this.dropdown.height();
       if (delta > 0) {
@@ -283,7 +299,7 @@
 
     pickSelected: function() {
       var selected = this.results[this.selectedIndex];
-      if (selected) {
+      if (selected && !selected.disabled) {
         this.input.val(selected.name);
         this.setValue(selected.value);
         this.picked = true;
