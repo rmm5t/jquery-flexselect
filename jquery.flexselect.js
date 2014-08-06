@@ -59,7 +59,7 @@
         name = $(this).text();
         group = $(this).parent("optgroup").attr("label");
         text = indexGroup ? [name, group].join(" ") : name;
-        disabled = $(this).parent('optgroup[disabled]').size() != 0 || typeof $(this).attr('disabled') != 'undefined';
+        disabled = $(this).parent("optgroup").attr("disabled") || $(this).attr('disabled');
         return { text: $.trim(text), name: $.trim(name), value: $(this).val(), disabled: disabled, score: 0.0 };
       });
     },
@@ -252,14 +252,11 @@
       });
 
       var html = '';
+      var disabledAttribute = '';
       $.each(this.results, function() {
-        //html += '<li>' + this.name + ' <small>[' + Math.round(this.score*100)/100 + ']</small></li>';
         if (this.disabled && !showDisabled) return;
-        else if (this.disabled && showDisabled) {
-          html += '<li class="disabled">' + this.name + '</li>';
-        } else {
-          html += '<li>' + this.name + '</li>';
-        }
+        disabledAttribute = this.disabled ? ' class="disabled"' : '';
+        html += '<li' + disabledAttribute + '>' + this.name + '</li>';
       });
       this.dropdownList.html(html);
       this.adjustMaxHeight();
