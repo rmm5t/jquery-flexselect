@@ -47,12 +47,12 @@
     init: function(select, options) {
       this.settings = $.extend({}, this.settings, options);
       this.select = $(select);
-      this.preloadCache();
+      this.reloadCache();
       this.renderControls();
       this.wire();
     },
 
-    preloadCache: function() {
+    reloadCache: function() {
       var name, group, text, disabled;
       var indexGroup = this.settings.indexOptgroupLabels;
       this.cache = this.select.find("option").map(function() {
@@ -327,7 +327,11 @@
 
   $.fn.flexselect = function(options) {
     this.each(function() {
-      if (this.tagName == "SELECT") new $.flexselect(this, options);
+      if ($(this).data("flexselect")) {
+        $(this).data("flexselect").reloadCache();
+      } else if (this.tagName == "SELECT") {
+        $(this).data("flexselect", new $.flexselect(this, options));
+      }
     });
     return this;
   };
