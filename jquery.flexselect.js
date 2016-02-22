@@ -137,6 +137,12 @@
         self.pickSelected();
         self.focusAndHide();
       });
+      this.dropdownList[0].addEventListener('touchstart', function(event) {
+        if (event.target.tagName == "LI") {
+          var rows = self.dropdown.find("li");
+          self.markSelected(rows.index($(event.target)));
+        }
+      });
       this.dropdown.mouseover(function(event) {
         self.dropdownMouseover = true;
       });
