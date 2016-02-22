@@ -103,7 +103,7 @@
 
       this.input.focus(function() {
         self.abbreviationBeforeFocus = self.input.val();
-        self.input.select();
+        self.input[0].setSelectionRange(0, 999);
         if (!self.picked) self.filterResults();
       });
 
