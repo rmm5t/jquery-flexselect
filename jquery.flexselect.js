@@ -103,7 +103,7 @@
 
       this.input.focus(function() {
         self.abbreviationBeforeFocus = self.input.val();
-        self.input[0].setSelectionRange(0, 999);
+        self.input[0].setSelectionRange(0, self.input.val().length);
         if (!self.picked) self.filterResults();
       });
 
@@ -137,7 +137,7 @@
         self.pickSelected();
         self.focusAndHide();
       });
-      this.dropdownList[0].addEventListener('touchstart', function(event) {
+      this.dropdownList.bind("touchstart", function(event) {
         if (event.target.tagName == "LI") {
           var rows = self.dropdown.find("li");
           self.markSelected(rows.index($(event.target)));

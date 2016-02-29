@@ -4,4 +4,5 @@ notes.txt
 .bundle
 vendor/ruby
 vendor/cache
+public
 .project
