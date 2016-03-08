@@ -35,6 +35,7 @@
         $("input.flexselect").each(function(index) { $(this).attr("tabindex", index+1) });
       });
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
     <style>
       * { margin: 0; padding: 0; }
       body { font-family: Helvetica,Arial,sans-serif; color: #333; background-color: #ccc; font-size: 16px; line-height: 24px; }
@@ -64,6 +65,7 @@
       .example div.dull, .example div.flexselect { width: 350px; }
       .example div.dull { float: left; }
       .example div.flexselect { float: right; }
+      .github-fork-ribbon:before { background-color: #f80; }
     </style>
   </head>
   <body>
@@ -179,7 +181,7 @@ When the form is submitted (with allowMismatch set to true), the original <code>
       (<a href="http://twitter.com/rmm5t">@rmm5t</a>)
     </div>
 
-    <a href="http://github.com/rmm5t/jquery-flexselect"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub" /></a>
+    <a class="github-fork-ribbon" href="http://github.com/rmm5t/jquery-flexselect" title="Fork me on GitHub">Fork me on GitHub</a>
 
     <div style="display:none;">
       <select id="president" name="president">
