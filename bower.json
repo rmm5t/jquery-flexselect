@@ -1,7 +1,10 @@
 {
   "name": "jquery-flexselect",
   "version": "0.8.0",
-  "main": "jquery.flexselect.js",
+  "main": [
+    "jquery.flexselect.js",
+    "flexselect.css"
+  ],
   "ignore": [
     "test",
     "vendor"
