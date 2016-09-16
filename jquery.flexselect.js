@@ -21,6 +21,7 @@
       allowMismatch: false,
       allowMismatchBlank: true, // If "true" a user can backspace such that the value is nothing (even if no blank value was provided in the original criteria)
       sortBy: 'score', // 'score' || 'name'
+      blankSortBy: false, // 'initial' || 'score' || 'name'
       preSelection: true,
       hideDropdownOnEmptyInput: false,
       selectedClass: "flexselect_selected",
@@ -112,11 +113,9 @@
           self.hide();
           if (self.settings.allowMismatchBlank && $.trim($(this).val()) == '')
             self.setValue('');
-          if (!self.settings.allowMismatch && !self.picked)
+          else if (!self.settings.allowMismatch && !self.picked)
             self.reset();
         }
-        if (self.settings.hideDropdownOnEmptyInput)
-          self.dropdownList.show();
       });
 
       this.dropdownList.mouseover(function(event) {
@@ -169,12 +168,6 @@
             self.filterResults();
             break;
         }
-        if (self.settings.hideDropdownOnEmptyInput){
-          if(self.input.val() == "")
-            self.dropdownList.hide();
-          else
-            self.dropdownList.show();
-        }
       });
 
       this.input.keydown(function(event) {
@@ -225,17 +218,31 @@
         if (this.score > 0.0) results.push(this);
       });
       this.results = results;
-
-      if (this.settings.sortBy == 'score')
-        this.sortResultsByScore();
-      else if (this.settings.sortBy == 'name')
-        this.sortResultsByName();
+      
+      if(this.settings.blankSortBy && $.trim(abbreviation) == ''){
+        if (this.settings.blankSortBy == 'score')
+          this.sortResultsByScore();
+        else if (this.settings.blankSortBy == 'name')
+          this.sortResultsByName();
+      } else {
+        if (this.settings.sortBy == 'score')
+          this.sortResultsByScore();
+        else if (this.settings.sortBy == 'name')
+          this.sortResultsByName();
+      }
 
       this.renderDropdown();
       this.markFirst();
       this.lastAbbreviation = abbreviation;
       this.picked = false;
       this.allowMouseMove = false;
+      
+      if (this.settings.hideDropdownOnEmptyInput){
+        if(this.input.val() == "")
+          this.dropdown.hide();
+        else
+          this.dropdown.show();
+      }
     },
 
     sortResultsByScore: function() {
