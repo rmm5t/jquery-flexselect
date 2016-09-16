@@ -113,11 +113,9 @@
           self.hide();
           if (self.settings.allowMismatchBlank && $.trim($(this).val()) == '')
             self.setValue('');
-          if (!self.settings.allowMismatch && !self.picked)
+          else if (!self.settings.allowMismatch && !self.picked)
             self.reset();
         }
-        if (self.settings.hideDropdownOnEmptyInput)
-          self.dropdownList.show();
       });
 
       this.dropdownList.mouseover(function(event) {
@@ -169,12 +167,6 @@
           default:
             self.filterResults();
             break;
-        }
-        if (self.settings.hideDropdownOnEmptyInput){
-          if(self.input.val() == "")
-            self.dropdownList.hide();
-          else
-            self.dropdownList.show();
         }
       });
 
@@ -244,6 +236,13 @@
       this.lastAbbreviation = abbreviation;
       this.picked = false;
       this.allowMouseMove = false;
+      
+      if (this.settings.hideDropdownOnEmptyInput){
+        if(this.input.val() == "")
+          this.dropdown.hide();
+        else
+          this.dropdown.show();
+      }
     },
 
     sortResultsByScore: function() {
