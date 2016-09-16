@@ -29,7 +29,7 @@ desc "Publish a release to the wild"
 task :publish do
   sh "git checkout gh-pages"
   sh "git merge master"
-  sh "git push"
+  sh "git push -u origin gh-pages"
   sh "git checkout master"
   sh "git push"
   sh "git push --tags"
