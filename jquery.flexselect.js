@@ -21,6 +21,7 @@
       allowMismatch: false,
       allowMismatchBlank: true, // If "true" a user can backspace such that the value is nothing (even if no blank value was provided in the original criteria)
       sortBy: 'score', // 'score' || 'name'
+      blankSortBy: false, // 'initial' || 'score' || 'name'
       preSelection: true,
       hideDropdownOnEmptyInput: false,
       selectedClass: "flexselect_selected",
@@ -225,11 +226,18 @@
         if (this.score > 0.0) results.push(this);
       });
       this.results = results;
-
-      if (this.settings.sortBy == 'score')
-        this.sortResultsByScore();
-      else if (this.settings.sortBy == 'name')
-        this.sortResultsByName();
+      
+      if(this.settings.blankSortBy && $.trim(abbreviation) == ''){
+        if (this.settings.blankSortBy == 'score')
+          this.sortResultsByScore();
+        else if (this.settings.blankSortBy == 'name')
+          this.sortResultsByName();
+      } else {
+        if (this.settings.sortBy == 'score')
+          this.sortResultsByScore();
+        else if (this.settings.sortBy == 'name')
+          this.sortResultsByName();
+      }
 
       this.renderDropdown();
       this.markFirst();
