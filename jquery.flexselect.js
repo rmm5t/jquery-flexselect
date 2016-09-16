@@ -21,7 +21,7 @@
       allowMismatch: false,
       allowMismatchBlank: true, // If "true" a user can backspace such that the value is nothing (even if no blank value was provided in the original criteria)
       sortBy: 'score', // 'score' || 'name'
-      blankSortBy: false, // 'initial' || 'score' || 'name'
+      blankSortBy: 'initial', // 'score' || 'name' || 'initial'
       preSelection: true,
       hideDropdownOnEmptyInput: false,
       selectedClass: "flexselect_selected",
@@ -208,7 +208,8 @@
 
     filterResults: function() {
       var showDisabled = this.settings.showDisabledOptions;
-      var abbreviation = this.input.val();
+      var abbreviation = $.trim(this.input.val());
+      var sortByMechanism = (abbreviation == "") ? this.settings.blankSortBy : this.settings.sortBy;
       if (abbreviation == this.lastAbbreviation) return;
 
       var results = [];
@@ -218,30 +219,27 @@
         if (this.score > 0.0) results.push(this);
       });
       this.results = results;
-      
-      if(this.settings.blankSortBy && $.trim(abbreviation) == ''){
-        if (this.settings.blankSortBy == 'score')
-          this.sortResultsByScore();
-        else if (this.settings.blankSortBy == 'name')
-          this.sortResultsByName();
-      } else {
-        if (this.settings.sortBy == 'score')
-          this.sortResultsByScore();
-        else if (this.settings.sortBy == 'name')
-          this.sortResultsByName();
-      }
 
+      this.sortResultsBy(sortByMechanism);
       this.renderDropdown();
       this.markFirst();
       this.lastAbbreviation = abbreviation;
       this.picked = false;
       this.allowMouseMove = false;
-      
+
       if (this.settings.hideDropdownOnEmptyInput){
-        if(this.input.val() == "")
+        if (abbreviation == "")
           this.dropdown.hide();
         else
           this.dropdown.show();
+      }
+    },
+
+    sortResultsBy: function(mechanism) {
+      if (mechanism == "score") {
+        this.sortResultsByScore();
+      } else if (mechanism == "name") {
+        this.sortResultsByName();
       }
     },
 
