@@ -312,7 +312,7 @@
         this.setValue(selected.value);
         this.picked = true;
       } else if (this.settings.allowMismatch) {
-        this.setValue.val("");
+        this.setValue("");
       } else {
         this.reset();
       }
