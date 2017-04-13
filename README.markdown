@@ -57,6 +57,20 @@ into a bad-ass autocompleting text box with flex matching support.
 
 **For more usage and examples**: [http://rmm5t.github.io/jquery-flexselect/](http://rmm5t.github.io/jquery-flexselect/)
 
+## Events:
+
+The Control Fires a Callback when a Item is selected:
+
+    <pre>
+      jQuery(document).ready(function() {
+        jQuery("select.flexselect).flexselect({
+            onselect: function(name_of_item, value_of_item) {
+              alert("You selected " + name_of_item + " with the value / id of " + value_of_item)
+            }
+          });
+      });
+    </pre>
+
 ## Inspired by:
 
 * [jQuery.quickselect](http://jonmagic.com/2008/11/12/jquery-quickselect-js) by Daniel Parker
