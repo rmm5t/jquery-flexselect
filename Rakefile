@@ -38,14 +38,14 @@ end
 desc "Construct a new release package, and optionally tag the repository"
 task :release => [:rewrite_docs, :rewrite_bower, :commit, :repackage] do
   sh("git tag -s 'v#{package.version}' -m 'Version #{package.version}'")
-  puts("\n *** Don't forget to push the zip file to S3 ***")
+  puts("\n *** Don't forget to push the zip file to a GitHub Release ***")
   puts("\n *** Don't forget to `rake publish` ***")
 end
 
 desc "Rewrite the downlaod location in the docs"
 task :rewrite_docs => :version do
   docs = IO.read("index.html")
-  docs.sub!(/(download_url = .+)-\d+\.\d+\.\d+.zip/, "\\1-#{package.version}.zip")
+  docs.sub!(/download_url =.*/, "download_url = \"https://github.com/rmm5t/jquery-flexselect/releases/download/v#{package.version}/jquery.flexselect-#{package.version}.zip\";")
   File.open("index.html", "w") { |f| f.write docs }
 end
 
