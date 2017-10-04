@@ -1,12 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE html>
+<html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="microid" content="mailto+http:sha1:90c9a60ac311baa89f1b48b4a805b0f310361b9d" />
     <title>flexselect: a jQuery plugin</title>
     <link rel="stylesheet" href="flexselect.css" type="text/css" media="screen" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script>
     <script src="liquidmetal.js" type="text/javascript"></script>
     <script src="jquery.flexselect.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -79,7 +78,7 @@
       </p>
 
       <p>
-        It uses the <a href="http://github.com/rmm5t/liquidmetal/">LiquidMetal</a> scoring algorithm to narrow the selection.
+        It uses the <a href="https://github.com/rmm5t/liquidmetal/">LiquidMetal</a> scoring algorithm to narrow the selection.
       </p>
 
       <h3>Examples</h3>
@@ -100,7 +99,7 @@
 
       <h3>How?</h3>
       <p class="how">
-        First, load the default styles, <a href="http://jquery.com/">jQuery</a>, the <a href="http://github.com/rmm5t/liquidmetal/">LiquidMetal</a> scoring algorithm, and the plugin.
+        First, load the default styles, <a href="https://jquery.com/">jQuery</a>, the <a href="https://github.com/rmm5t/liquidmetal/">LiquidMetal</a> scoring algorithm, and the plugin.
       </p>
       <pre>
 &lt;link rel=&quot;stylesheet&quot; href=&quot;flexselect.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot; /&gt;
@@ -161,14 +160,14 @@ When the form is submitted (with allowMismatch set to true), the original <code>
       <p><a class="download">Download the &quot;stable&quot; release</a>.</p>
       <p>
         The code is hosted on
-        GitHub: <a href="http://github.com/rmm5t/jquery-flexselect">http://github.com/rmm5t/jquery-flexselect</a>.
+        GitHub: <a href="https://github.com/rmm5t/jquery-flexselect">https://github.com/rmm5t/jquery-flexselect</a>.
         Go on, live on the edge.
       </p>
 
       <h3>Who?</h3>
       <p>
         Flexselect was built by <a href="http://ryan.mcgeary.org">Ryan McGeary</a>
-        (<a href="http://twitter.com/rmm5t">@rmm5t</a>) and was inspired by <a href="https://github.com/dcparker/jquery_plugins/tree/master/quickselect">jQuery.quickselect</a>, <a href="http://warpspire.com/tipsresources/interface-scripting/select-autocompleter/">MooTools Select Autocompleter</a>, <a href="http://orderedlist.com/articles/live-search-with-quicksilver-style-for-jquery">Live Search with QuickSilver</a>, and <a href="http://ejohn.org/blog/jquery-livesearch/">jQuery LiveSearch</a>.
+        (<a href="https://twitter.com/rmm5t">@rmm5t</a>) and was inspired by <a href="https://github.com/dcparker/jquery_plugins/tree/master/quickselect">jQuery.quickselect</a>, <a href="http://warpspire.com/tipsresources/interface-scripting/select-autocompleter/">MooTools Select Autocompleter</a>, <a href="http://orderedlist.com/articles/live-search-with-quicksilver-style-for-jquery">Live Search with QuickSilver</a>, and <a href="http://ejohn.org/blog/jquery-livesearch/">jQuery LiveSearch</a>.
       </p>
     </div>
 
@@ -181,7 +180,7 @@ When the form is submitted (with allowMismatch set to true), the original <code>
       (<a href="http://twitter.com/rmm5t">@rmm5t</a>)
     </div>
 
-    <a class="github-fork-ribbon" href="http://github.com/rmm5t/jquery-flexselect" title="Fork me on GitHub">Fork me on GitHub</a>
+    <a class="github-fork-ribbon" href="https://github.com/rmm5t/jquery-flexselect" title="Fork me on GitHub">Fork me on GitHub</a>
 
     <div style="display:none;">
       <select id="president" name="president">
@@ -267,14 +266,17 @@ When the form is submitted (with allowMismatch set to true), the original <code>
       </select>
     </div>
 
+
     <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-604149-6']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
     </script>
-    <script type="text/javascript">
-    try {
-    var pageTracker = _gat._getTracker("UA-604149-6");
-    pageTracker._trackPageview();
-    } catch(err) {}</script>
   </body>
 </html>
