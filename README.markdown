@@ -75,8 +75,6 @@ into a bad-ass autocompleting text box with flex matching support.
 
 [Ryan McGeary](http://ryan.mcgeary.org) ([@rmm5t](http://twitter.com/rmm5t))
 
-## Other
+## License
 
-[MIT License](http://www.opensource.org/licenses/mit-license.php)
-
-Copyright (c) 2009-2017, Ryan McGeary (ryan -[at]- mcgeary [*dot*] org)
+[MIT License](https://rmm5t.mit-license.org/)
