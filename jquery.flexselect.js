@@ -44,6 +44,7 @@
     allowMouseMove: true,
     dropdownMouseover: false, // Workaround for poor IE behaviors
     indexOptgroupLabels: false,
+    isFocused: false,
 
     init: function(select, options) {
       this.settings = $.extend({}, this.settings, options);
@@ -93,8 +94,10 @@
       var self = this;
 
       this.input.click(function() {
-        self.lastAbbreviation = null;
-        self.focus();
+        if (!self.isFocused) {
+          self.lastAbbreviation = null;
+          self.focus();
+        }
       });
 
       this.input.mouseup(function(event) {
@@ -106,6 +109,7 @@
         self.abbreviationBeforeFocus = self.input.val();
         self.input[0].setSelectionRange(0, self.input.val().length);
         if (!self.picked) self.filterResults();
+        self.isFocused = true;
       });
 
       this.input.blur(function() {
@@ -115,6 +119,7 @@
             self.setValue('');
           else if (!self.settings.allowMismatch && !self.picked)
             self.reset();
+          self.isFocused = false;
         }
       });
 
