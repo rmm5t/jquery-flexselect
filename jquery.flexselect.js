@@ -306,6 +306,7 @@
     },
 
     pickSelected: function() {
+      if (this.select.is(':disabled') || this.input.is(':disabled')) return;
       var selected = this.results[this.selectedIndex];
       if (selected && !selected.disabled) {
         this.input.val(selected.name);
