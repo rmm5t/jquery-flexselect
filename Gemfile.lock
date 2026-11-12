@@ -1,11 +1,11 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    highline (3.1.1)
+    highline (3.1.2)
       reline
-    io-console (0.7.2)
-    rake (13.2.1)
-    reline (0.5.11)
+    io-console (0.9.5)
+    rake (13.4.2)
+    reline (0.7.0)
       io-console (~> 0.5)
 
 PLATFORMS
@@ -16,4 +16,4 @@ DEPENDENCIES
   rake
 
 BUNDLED WITH
-   2.5.22
+  4.0.24
